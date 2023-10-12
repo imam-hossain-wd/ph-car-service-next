@@ -12,6 +12,14 @@ const Navbar = () => {
       key: "0",
       label: (
         <Button  type="text" danger>
+          <Link href="/login">Login</Link>
+        </Button>
+      ),
+    },
+    {
+      key: "0",
+      label: (
+        <Button  type="text" danger>
           Logout
         </Button>
       ),
@@ -19,15 +27,13 @@ const Navbar = () => {
   ];
 
   return (
-    <Layout className="layout">
-    <Header className='flex justify-between items-center'>
+    <Layout className="layout ">
+    <Header className='flex justify-between items-center bg-white text-black'>
       <div>
-       <Link className='text-3xl text-white' href="/"> Car Service</Link>
+       <Link className='text-3xl text-black font-bold' href="/"> Car Service</Link>
       </div>
      <div  className='flex justify-center items-center'>
      <Menu
-    
-        theme="dark"
         mode="horizontal"
         defaultSelectedKeys={['1']} 
       >
@@ -35,9 +41,12 @@ const Navbar = () => {
           <Link href="/">Home</Link> 
         </Menu.Item>
         <Menu.Item key="2">
-          <Link href="/about">About</Link> 
+          <Link href="/service">Services</Link> 
         </Menu.Item>
         <Menu.Item key="3">
+          <Link href="/about">About</Link> 
+        </Menu.Item>
+        <Menu.Item key="4">
           <Link href="/contact">Contact</Link> 
         </Menu.Item>
        
