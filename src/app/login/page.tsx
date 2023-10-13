@@ -23,17 +23,13 @@ console.log(IsUserLoggedIn());
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res =await userLogIn({...data}).unwrap()
-      console.log(res?.data?.accessToken);
-      storeUserInto({accessToken:res?.data?.accessToken })
-      
-      
-      console.log(data);
-      // if (res?.accessToken) {
-      //   router.push("/profile");
-      // }
-      // storeUserInfo({ accessToken: res?.accessToken });
+  
+      if (res?.accessToken) {
+        storeUserInto({accessToken:res?.data?.accessToken })
+        router.push("/profile");
+      }
 
-      // console.log(res);
+      console.log(res);
     } catch (err: any) {
       console.error(err.message);
     }
