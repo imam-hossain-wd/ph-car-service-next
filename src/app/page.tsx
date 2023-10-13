@@ -1,3 +1,4 @@
+import HomeBanner from "@/components/ui/HomeBanner/HomeBanner"
 
 
 
@@ -5,9 +6,7 @@
 export default function Home() {
   return (
     <div>
-   
-      <h1>hello nextjs </h1>
- 
+      <HomeBanner /> 
     </div>
   )
 }
