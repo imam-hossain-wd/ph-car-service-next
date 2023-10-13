@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { Button, Col, Input, Row } from "antd";
-import Image from "next/image";
 import Form from "@/components/Forms/Form";
 import { SubmitHandler } from "react-hook-form";
 import FormInput from "@/components/Forms/InputForm";
+import { useRouter } from "next/navigation";
+import { useUserLogInMutation } from "@/redux/api/authApi";
+import { storeUserInto } from "@/services/auth.service";
+
 
 type FormValues = {
   id: string;
@@ -12,11 +15,27 @@ type FormValues = {
 };
 
 const LoginPage = () => {
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const router = useRouter();
+const [userLogIn]= useUserLogInMutation()
+
+  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
+      const res =await userLogIn({...data}).unwrap()
+      // console.log(res?.data?.accessToken);
+      storeUserInto({accessToken:res?.data?.accessToken })
+      
       console.log(data);
-    } catch (err) {}
+      // if (res?.accessToken) {
+      //   router.push("/profile");
+      // }
+      // storeUserInfo({ accessToken: res?.accessToken });
+
+      // console.log(res);
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
+
   return (
     <Row
       justify="center"
@@ -41,7 +60,7 @@ const LoginPage = () => {
         <div>
           <Form submitHandler={onSubmit}>
             <div>
-              <FormInput name="id" type="text" size="large" label="User Id" />
+              <FormInput name="email" type="text" size="large" label="Email" />
             </div>
             <div
               style={{
@@ -58,6 +77,7 @@ const LoginPage = () => {
             <Button type="primary" htmlType="submit">
               Login
             </Button>
+          
           </Form>
         </div>
       </Col>
