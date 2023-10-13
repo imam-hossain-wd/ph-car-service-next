@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { UserOutlined } from "@ant-design/icons";
 import { IsUserLoggedIn } from "@/services/auth.service";
+import Image from "next/image";
 
 const { Header } = Layout;
 
@@ -50,10 +51,16 @@ const Navbar = () => {
   return (
     <Layout className="layout ">
       <Header className="flex justify-between items-center bg-white text-black">
-        <div>
-          <Link className="text-3xl text-black font-bold" href="/">
-            {" "}
-            Car Service
+        <div >
+          <Link className="flex justify-center items-center" href="/"> 
+  
+            <Image className="w-12 h-12 ml-16 "
+      src="https://i.ibb.co/HxLD1kn/cardev-logo.jpg"
+      width={100}
+      height={100}
+      alt="Picture of the author"
+      />
+      <h1 className="text-black  ml-3">Car <span className="text-red-500 -ml-2">Dev</span></h1>
           </Link>
         </div>
         <div className="flex justify-center items-center">
