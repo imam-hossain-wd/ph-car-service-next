@@ -2,10 +2,10 @@ import { Button } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 
-const ServiceProductsPage = ({ service }: any) => {
+const ServiceProductsPage = ({ service}: any) => {
   return (
     <div className="shadow-2xl w-[90%] mx-auto p-5" >
-      <Link href={`/service/${service.id}`} className="w-full no-underline">
+      <Link href={`/service/${service?.id}`} className="w-full no-underline">
         <Image src={service?.imageUrl} alt="product" width={360} height={200} />
         <h1 className="text-xl font-semibold text-black ">{service?.name}</h1>
       </Link>

@@ -16,7 +16,7 @@ export const sidebarItems = (role: string) => {
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}`}>Account Profile</Link>,
+          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
           key: `/${role}/profile`,
         },
         {
@@ -30,6 +30,11 @@ export const sidebarItems = (role: string) => {
   const commonAdminSidebarItems: MenuProps["items"] = [
     {
       label: <Link href={`/${role}/manage-users`}>Manage Users</Link>,
+      icon: <TableOutlined />,
+      key: `/${role}/manage-student`,
+    },
+    {
+      label: <Link href={`/${role}/manage-users`}>Manage Booking</Link>,
       icon: <TableOutlined />,
       key: `/${role}/manage-student`,
     },
@@ -86,7 +91,7 @@ export const sidebarItems = (role: string) => {
       key: `/${role}/courses/schedule`,
     },
     {
-      label: <Link href={`/${role}/WishList`}>wishList</Link>,
+      label: <Link href={`/${role}/wishlist`}>wishList</Link>,
       icon: <ThunderboltOutlined />,
       key: `/${role}/registration`,
     }

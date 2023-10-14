@@ -13,15 +13,16 @@ import Link from "next/link";
 import { UserOutlined } from "@ant-design/icons";
 import { IsUserLoggedIn } from "@/services/auth.service";
 import Image from "next/image";
+import { authKey } from "@/constants/storageKey";
 
 const { Header } = Layout;
 
 const Navbar = () => {
 
  const loggedUser = IsUserLoggedIn();
-
+console.log(loggedUser, 'nv');
   const handleLogOut = () => {
-    console.log("logout");
+   localStorage.removeItem(authKey)
   };
 
   const items: MenuProps["items"] = [

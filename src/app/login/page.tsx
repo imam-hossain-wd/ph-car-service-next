@@ -18,13 +18,12 @@ const LoginPage = () => {
   const router = useRouter();
 const [userLogIn]= useUserLogInMutation()
 
-console.log(IsUserLoggedIn());
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res =await userLogIn({...data}).unwrap()
-  
-      if (res?.accessToken) {
+      
+      if (res?.data?.accessToken) {
         storeUserInto({accessToken:res?.data?.accessToken })
         router.push("/profile");
       }

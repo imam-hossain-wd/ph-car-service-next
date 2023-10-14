@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Layout, Menu } from "antd";
 import { USER_ROLE } from "../constatnts/role";
 import { sidebarItems } from "../constatnts/sidebarItems";
+import Image from "next/image";
 
 
 const { Sider } = Layout;
@@ -11,10 +12,11 @@ const { Sider } = Layout;
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const role = USER_ROLE.ADMIN;
+  const role = USER_ROLE.USER;
 
   return (
     <Sider
+    className="bg-white text-black"
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
@@ -29,19 +31,12 @@ const SideBar = () => {
       }}
     >
       <div
-        style={{
-          color: "white",
-          fontSize: "2rem",
-          textAlign: "center",
-          fontWeight: "bold",
-          marginBottom: ".5rem",
-          padding: "10px 0px",
-        }}
+      className=" flex justify-center font-bold mb-2 py-3"
       >
-       CS
+       <Image src="https://i.ibb.co/x1QL0zX/dashboard-logo.jpg" width={60} height={55} alt="dashboard logo" />
       </div>
       <Menu
-        theme="dark"
+        // theme="dark"
         defaultSelectedKeys={["1"]}
         mode="inline"
         items={sidebarItems(role)}
