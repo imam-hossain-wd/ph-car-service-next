@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { Layout, Menu } from "antd";
-import { USER_ROLE } from "../constatnts/role";
 import { sidebarItems } from "../constatnts/sidebarItems";
 import Image from "next/image";
+import { getUserInfo } from "@/services/auth.service";
 
 
 const { Sider } = Layout;
@@ -12,8 +12,9 @@ const { Sider } = Layout;
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const role = USER_ROLE.USER;
-
+  const {role} = getUserInfo() as any;
+  console.log(role, 'user role');
+ 
   return (
     <Sider
     className="bg-white text-black"

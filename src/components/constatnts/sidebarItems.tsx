@@ -36,7 +36,7 @@ export const sidebarItems = (role: string) => {
     {
       label: <Link href={`/${role}/manage-users`}>Manage Booking</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/manage-student`,
+      key: `/${role}/manage-booking`,
     },
   ];
 
@@ -68,17 +68,17 @@ export const sidebarItems = (role: string) => {
       icon: <TableOutlined />,
       key: `/${role}/admin`,
     },
-    {
-      label: "Management booking",
-      key: "management",
-      icon: <AppstoreOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/booking`}>Booking</Link>,
-          key: `/${role}/department`,
-        },
-      ],
-    },
+    // {
+    //   label: "Management booking",
+    //   key: "management",
+    //   icon: <AppstoreOutlined />,
+    //   children: [
+    //     {
+    //       label: <Link href={`/${role}/booking`}>Booking</Link>,
+    //       key: `/${role}/department`,
+    //     },
+    //   ],
+    // },
   ];
 
  
