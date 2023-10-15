@@ -7,6 +7,8 @@ import FormTextArea from "@/components/Forms/FormTextArea";
 import FormInput from "@/components/Forms/InputForm";
 import { bloodGroupOptions, genderOptions } from "@/components/constatnts/global";
 import UploadImage from "@/components/ui/uploadImage/UploadImage";
+import { adminSchema } from "@/schemas/admin";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "antd";
 
 const CreateAdmin = () => {
@@ -23,7 +25,7 @@ const CreateAdmin = () => {
         <h1>Create Admin</h1>
   
         <div>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
             <div
               style={{
                 border: "1px solid #d9d9d9",
@@ -125,7 +127,6 @@ const CreateAdmin = () => {
               </Row>
             </div>
   
-            {/* basic info */}
             <div
               style={{
                 border: "1px solid #d9d9d9",
