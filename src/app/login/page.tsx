@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Button, Col, Input, Row } from "antd";
+import { Button, Col, Input, Row, message } from "antd";
 import Form from "@/components/Forms/Form";
 import { SubmitHandler } from "react-hook-form";
 import FormInput from "@/components/Forms/InputForm";
@@ -25,6 +25,7 @@ const [userLogIn]= useUserLogInMutation()
       
       if (res?.accessToken) {
         router.push("/profile");
+        message.success("Login Successful")
       }
       storeUserInto({accessToken:res?.accessToken })
       // console.log(res?.accessToken, 'tkn');

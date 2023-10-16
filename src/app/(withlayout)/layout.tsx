@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client"
+"use client";
 import Contents from "@/components/ui/Contents";
 import SideBar from "@/components/ui/Sidebar";
 import { IsUserLoggedIn } from "@/services/auth.service";
@@ -21,9 +21,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   }, [router, isLoading]);
 
   if (!isLoading) {
-    return <p>Loading......</p>;
+    return (
+      <Space className="flex justify-center items-center">
+        <Spin size="large" />
+      </Space>
+    );
   }
-
 
   return (
     <Layout hasSider>

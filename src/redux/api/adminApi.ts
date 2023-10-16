@@ -2,17 +2,17 @@ import { tagTypes } from "../tag-types"
 import { baseApi } from "./baseApi"
 
 
-export const authApi = baseApi.injectEndpoints({
+export const adminApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    userLogIn: build.mutation({
+    createAdmin: build.mutation({
       query: (logIndata) => ({
-        url:"/auth/login",
+        url:"/admin/create",
         method:"POST",
         data:logIndata
       }),
-      invalidatesTags:[tagTypes.user]
+      invalidatesTags:[tagTypes.admin]
     }),
   }),
 })
 
-export const { useUserLogInMutation } = authApi
+export const { useCreateAdminMutation } = adminApi
