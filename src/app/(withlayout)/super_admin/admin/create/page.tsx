@@ -8,6 +8,7 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import FormTextArea from "@/components/Forms/FormTextArea";
 import FormInput from "@/components/Forms/InputForm";
 import { bloodGroupOptions, genderOptions } from "@/components/constatnts/global";
+import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
 import UploadImage from "@/components/ui/uploadImage/UploadImage";
 import { useCreateAdminMutation } from "@/redux/api/adminApi";
 
@@ -32,7 +33,7 @@ const CreateAdminPage = () => {
     // const formData = new FormData();
     // formData.append("file", file as Blob);
     // formData.append("data", data);
-    // message.loading("Creating...");
+    message.loading("Creating...");
 
     // console.log(formData);
     try {
@@ -46,6 +47,18 @@ const CreateAdminPage = () => {
 
   return (
     <div>
+      <BreadCrumb
+        items={[
+          {
+            label: "super_admin",
+            link: "/super_admin",
+          },
+          {
+            label: "admin",
+            link: "/super_admin/admin",
+          },
+        ]}
+      />
      
       <h1>Create Admin</h1>
 
