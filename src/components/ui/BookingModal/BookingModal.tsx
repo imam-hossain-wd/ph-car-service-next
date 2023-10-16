@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useAddBookingMutation } from '@/redux/api/bookingApi';
 import moment from 'moment';
 import { getUserInfo } from '@/services/auth.service';
+import { IBookingData } from '@/types';
 
 
 
@@ -14,8 +15,9 @@ const App = ({isModalOpen,setIsModalOpen,bookingData}:any) => {
 
   const [addBooking]= useAddBookingMutation()
 
-  const BookingData ={
+  const BookingData:IBookingData ={
     bookingName : bookingData?.name,
+    //@ts-ignore
     userId : user?.id,
     serviceId : bookingData?.id,
     date: myDate ? moment(myDate).format('YYYY-MM-DDTHH:mm:ss[Z]') : ''

@@ -1,13 +1,13 @@
-export interface IMeta{
-    limit: number;
-    page: number;
-    size: number;
+export interface IMeta {
+  limit: number;
+  page: number;
+  size: number;
 }
 
 export type ResponseSuccessType = {
-    data: any;
-    meta?:IMeta
-}
+  data: any;
+  meta?: IMeta;
+};
 
 export type IGenericErrorResponse = {
   statusCode: number;
@@ -20,11 +20,18 @@ export type IGenericErrorMessage = {
   message: string;
 };
 
-export type IService ={
-  id:         string ;
-  name:        string;
-  description:  string;
-  price :       number;
-  imageUrl :    string ;
-  availability : boolean;
-}
+export type IService = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  availability: boolean;
+};
+
+export type IBookingData = {
+  bookingName: string;
+  userId: string;
+  serviceId: string;
+  date: string;
+};
