@@ -56,7 +56,7 @@ const meta = data?.meta;
       dataIndex: "email",
     },
     // {
-    //   title: "Department",
+    //   title: "Department",http://localhost:3000/super_admin/manage-users
     //   dataIndex: "managementDepartment",
     //   render: function (data: IDepartment) {
     //     return <>{data?.title}</>;
@@ -89,12 +89,12 @@ const meta = data?.meta;
                 <EyeOutlined />
               </Button>
             </Link>
-            <Link href={`/super_admin/admin/edit/${data.id}`}>
+            <Link href={`/super_admin/admin/edit/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",
                 }}
-                onClick={() => console.log(data)}
+                onClick={() => console.log(data?.id)}
                 type="primary"
               >
                 <EditOutlined />
