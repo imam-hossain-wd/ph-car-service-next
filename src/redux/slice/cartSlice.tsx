@@ -20,7 +20,7 @@ const initialState: CartState = {
 
 const CART_STORAGE_KEY = 'cartData';
 
-const saveCartDataToLocalStorage = (data:any) => {
+const saveCartDataToLocalStorage = (data:CartItem) => {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(data));
 };
 
@@ -42,7 +42,7 @@ export const cartSlice = createSlice({
         saveCartDataToLocalStorage(state.items); 
       },
       removeFromCart: (state, action: PayloadAction<number>) => {
-        state.items = state.items.filter((item:any) => item.id !== action.payload);
+        state.items = state.items.filter((item:CartItem) => item.id !== action.payload);
         saveCartDataToLocalStorage(state.items); 
       },
       clearCart: (state) => {

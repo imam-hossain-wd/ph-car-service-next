@@ -9,7 +9,6 @@ const ServicePage = async () => {
     },
   });
   const services = await res.json();
-  console.log(services);
 
   return (
     <div>
