@@ -13,10 +13,10 @@ export const bookingApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:[tagTypes.booking]
     }),
-    bookking: build.query({
+    booking: build.query({
       query: (arg: Record<string, any>) => {
         return {
-          url: "/booking",
+          url: "/admin",
           method: "GET",
           params: arg,
         };
@@ -27,9 +27,9 @@ export const bookingApi = baseApi.injectEndpoints({
       //     meta,
       //   };
       // },
-      providesTags: [tagTypes.booking],
+      providesTags: [tagTypes.admin],
     }),
   }),
 })
 
-export const { useAddBookingMutation , useBookkingQuery} = bookingApi
+export const { useAddBookingMutation , useBookingQuery} = bookingApi
