@@ -13,7 +13,7 @@ const ProductDetails = (data: any) => {
   const { id, name, imageUrl, availability, price, description } = data?.data;
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  
+  console.log(bookingData);
   // console.log(cartItems, 'cartitems,,,,');
   const HandleAddToCart = (productDetails: any):any => {
     dispatch(addToCart(productDetails))
@@ -40,9 +40,6 @@ const ProductDetails = (data: any) => {
           >
             Add to cart
           </Button>
-          {/* <Button className="bg-sky-400 hover:text-white border-0 text-bold">
-            Booking
-          </Button> */}
       <Button
   type="primary"
   onClick={() => {

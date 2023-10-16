@@ -2,20 +2,20 @@ import { tagTypes } from "../tag-types"
 import { baseApi } from "./baseApi"
 
 
-export const adminApi = baseApi.injectEndpoints({
+export const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    createAdmin: build.mutation({
+    createUser: build.mutation({
       query: (data) => ({
-        url:"/admin/create",
+        url:"/user/create",
         method:"POST",
         data
       }),
-      invalidatesTags:[tagTypes.admin]
+      invalidatesTags:[tagTypes.user]
     }),
-    admins: build.query({
+    users: build.query({
       query: (arg: Record<string, any>) => {
         return {
-          url: "/admin",
+          url: "/user",
           method: "GET",
           params: arg,
         };
@@ -26,9 +26,9 @@ export const adminApi = baseApi.injectEndpoints({
       //     meta,
       //   };
       // },
-      providesTags: [tagTypes.admin],
+      providesTags: [tagTypes.user],
     }),
   }),
 })
 
-export const { useCreateAdminMutation, useAdminsQuery } = adminApi
+export const { useCreateUserMutation,useUsersQuery } = userApi
