@@ -35,3 +35,12 @@ export type IBookingData = {
   serviceId: string;
   date: string;
 };
+
+export type IUserRegisterProps = {
+  email: string;
+  contactNo: string;
+  gender: "male | female";
+  password: string;
+  firstName: string;
+  lastName: string;
+};

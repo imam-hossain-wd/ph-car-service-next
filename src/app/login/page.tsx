@@ -10,7 +10,7 @@ import { storeUserInto } from "@/services/auth.service";
 
 
 type FormValues = {
-  id: string;
+  Email: string;
   password: string;
 };
 
