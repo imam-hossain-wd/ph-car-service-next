@@ -9,6 +9,8 @@ import FormSelectField from "@/components/Forms/FormSelectField";
 import { genderOptions } from "@/components/constatnts/global";
 import { useCreateUserMutation } from "@/redux/api/userApi";
 import UploadImage from "@/components/ui/uploadImage/UploadImage";
+import { userSchema } from "@/schemas/singup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type FormValues = {
   Email: string;
@@ -30,6 +32,8 @@ const LoginPage = () => {
       const formData = new FormData();
       formData.append("image", file);
 
+      console.log(obj);
+
       const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
       fetch(url, {
         method: "POST",
@@ -41,6 +45,7 @@ const LoginPage = () => {
             ...obj,
             userImage: imgData.data.url,
           };
+          console.log(userData)
           createUser(userData);
           message.success("User create successfully");
           router.push("/login");
@@ -61,7 +66,7 @@ const LoginPage = () => {
       <Col sm={12} md={8} lg={8}>
         <h1 className="text-center my-4">Register Page</h1>
         <div>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
             <div>
               <FormInput
                 name="firstName"

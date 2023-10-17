@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { getErrorMessageByPropertyName } from "@/utils/achemaValidator";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";
@@ -46,6 +47,7 @@ const UploadImage = ({name}:ImageUploadProps) => {
         setImageUrl(url);
       });
     }
+    setImageUrl('');
   };
 
   const uploadButton = (
@@ -54,6 +56,8 @@ const UploadImage = ({name}:ImageUploadProps) => {
       <div style={{ marginTop: 8 }}>Upload</div>
     </div>
   );
+
+
 
   return (
     <>
@@ -72,6 +76,7 @@ const UploadImage = ({name}:ImageUploadProps) => {
           uploadButton
         )}
       </Upload>
+    
     </>
   );
 };
