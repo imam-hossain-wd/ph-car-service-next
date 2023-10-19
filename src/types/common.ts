@@ -44,3 +44,10 @@ export type IUserRegisterProps = {
   firstName: string;
   lastName: string;
 };
+
+export type IReview = {
+  userId: string;
+  serviceId: string;
+  rating: number;
+  comment: string;
+};

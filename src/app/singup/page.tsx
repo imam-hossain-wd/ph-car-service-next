@@ -56,18 +56,16 @@ const LoginPage = () => {
   };
 
   return (
-    <Row
-      justify="center"
-      align="middle"
-      style={{
-        minHeight: "100vh",
-      }}
+    <div className="shadow-2xl">
+
+  
+    <Row className=" flex justify-center items-center "
     >
       <Col sm={12} md={8} lg={8}>
-        <h1 className="text-center my-4">Register Page</h1>
+        <h1 className="text-center my-2">Register Form</h1>
         <div>
           <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
-            <div>
+            <div className="my-2">
               <FormInput
                 name="firstName"
                 type="text"
@@ -75,7 +73,7 @@ const LoginPage = () => {
                 label="First Name"
               />
             </div>
-            <div>
+            <div className="my-2">
               <FormInput
                 name="lastName"
                 type="text"
@@ -86,7 +84,7 @@ const LoginPage = () => {
             <div>
               <FormInput name="email" type="text" size="large" label="Email" />
             </div>
-            <div>
+            <div className="my-2">
               <FormInput
                 name="contactNo"
                 type="number"
@@ -94,10 +92,11 @@ const LoginPage = () => {
                 label="Contact No"
               />
             </div>
-            <div className="">
+           <div className="flex">
+           <div className="my-2 mr-5">
               <UploadImage name="file" />
             </div>
-            <div>
+            <div className="my-2 w-60">
               <FormSelectField
                 size="large"
                 name="gender"
@@ -106,7 +105,8 @@ const LoginPage = () => {
                 placeholder="Select"
               />
             </div>
-            <div className="my-4">
+           </div>
+            <div className="my-2">
               <FormInput
                 name="password"
                 type="password"
@@ -121,6 +121,7 @@ const LoginPage = () => {
         </div>
       </Col>
     </Row>
+    </div>
   );
 };
 

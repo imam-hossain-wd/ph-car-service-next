@@ -12,18 +12,8 @@ export const sidebarItems = (role: string) => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: "Profile",
-      key: "profile",
+      key: `/${role}/profile`,
       icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/profile`}>Account Profile</Link>,
-          key: `/${role}/profile`,
-        },
-        {
-          label: <Link href={`/${role}/change-password`}>Change Password</Link>,
-          key: `/${role}/change-password`,
-        },
-      ],
     },
   ];
 
@@ -88,12 +78,12 @@ export const sidebarItems = (role: string) => {
     {
       label: <Link href={`/${role}/booking`}>Booking</Link>,
       icon: <ScheduleOutlined />,
-      key: `/${role}/courses/schedule`,
+      key: `/${role}/booking`,
     },
     {
-      label: <Link href={`/${role}/wishlist`}>wishList</Link>,
+      label: <Link href={`/${role}/cartlist`}>Cart List</Link>,
       icon: <ThunderboltOutlined />,
-      key: `/${role}/registration`,
+      key: `/${role}/cartlist`,
     }
   ];
 

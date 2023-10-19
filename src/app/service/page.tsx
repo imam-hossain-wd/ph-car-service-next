@@ -1,4 +1,6 @@
+import SearchFiltering from "@/components/ui/searchFiltering/searchFiltering";
 import ServiceProductsPage from "@/components/ui/serviceProducts/ServiceProducts";
+import { useAppSelector } from "@/redux/hooks";
 import { IService } from "@/types";
 
 const ServicePage = async () => {
@@ -9,12 +11,14 @@ const ServicePage = async () => {
     },
   });
   const services = await res.json();
+  const datas = services?.data?.data;
 
   return (
     <div>
+      <SearchFiltering />
       <h2 className="text-center my-5">Quality Car Care Solutions</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services?.data?.map((service: any) => (
+        {datas && datas.map((service: any) => (
           <ServiceProductsPage
             key={service.id}
             service={service}

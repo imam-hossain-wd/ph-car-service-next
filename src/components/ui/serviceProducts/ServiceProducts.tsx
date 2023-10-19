@@ -13,7 +13,7 @@ const ServiceProductsPage = ({ service}: any) => {
       <p className="text-sm">
         Availability: {service?.availability ? "In stock" : "Out of stock"}
       </p>
-      <p className="text-sm">Price: {service?.description}</p>
+      <p className="text-sm">Price: {service?.description.slice(0,150)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
      <div className="flex justify-center items-center my-3">
      <Button className="bg-sky-400 hover:text-white border-0 text-bold mr-5">Add to cart</Button>
       <Button className="bg-sky-400 hover:text-white border-0 text-bold">Booking</Button>

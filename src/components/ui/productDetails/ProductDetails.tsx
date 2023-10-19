@@ -22,12 +22,13 @@ const ProductDetails = (data: any) => {
     setIsModalOpen(true);
   };
   return (
-    <div>
-      <div className="w-full flex flex-col justify-center items-center">
-        <Image src={imageUrl} alt="product" width={460} height={300} />
-        <h1 className="text-xl font-semibold text-black ">{name}</h1>
+    <div className="flex flex-col justify-center items-center">
+      <div>
+        <Image src={imageUrl} alt="product" width={450} height={300} />
+        
       </div>
       <div>
+      <h1 className="text-xl font-semibold text-black ">{name}</h1>
         <p>Rating: {price}</p>
         <p className="text-sm">
           Availability: {availability ? "In stock" : "Out of stock"}
@@ -53,6 +54,8 @@ const ProductDetails = (data: any) => {
       </div>
       
       <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bookingData={bookingData} />
+
+
     </div>
   );
 };
