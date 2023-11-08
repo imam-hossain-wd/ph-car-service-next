@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
-import {  DatePicker,  Input, Modal} from 'antd';
-import Image from 'next/image';
-import { useAddBookingMutation } from '@/redux/api/bookingApi';
-import moment from 'moment';
-import { getUserInfo } from '@/services/auth.service';
-import { IBookingData } from '@/types';
+import React, { useState } from "react";
+import { DatePicker, Input, Modal } from "antd";
+import Image from "next/image";
+import { useAddBookingMutation } from "@/redux/api/bookingApi";
+import moment from "moment";
+import { getUserInfo } from "@/services/auth.service";
+import { IBookingData } from "@/types";
 
-
-
-const App = ({isModalOpen,setIsModalOpen,bookingData}:any) => {
+const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
   const [myDate, setMyDate] = useState(null);
 
-  const user = getUserInfo()
+  const user = getUserInfo();
 
-  const [addBooking]= useAddBookingMutation()
+  const [addBooking] = useAddBookingMutation();
 
-  const BookingData:IBookingData ={
-    bookingName : bookingData?.name,
+  const BookingData: IBookingData = {
+    bookingName: bookingData?.name,
     //@ts-ignore
-    userId : user?.id,
-    serviceId : bookingData?.id,
-    date: myDate ? moment(myDate).format('YYYY-MM-DDTHH:mm:ss[Z]') : ''
-  }
-  console.log(BookingData, 'bbdata');
+    userId: user?.id,
+    serviceId: bookingData?.id,
+    date: myDate ? moment(myDate).format("YYYY-MM-DDTHH:mm:ss[Z]") : "",
+  };
+  console.log(BookingData, "bbdata");
 
-  const handleDateChange = (date:any) => {
-    setMyDate(date)
+  const handleDateChange = (date: any) => {
+    setMyDate(date);
   };
   const handleOk = () => {
-    addBooking(BookingData)
+    addBooking(BookingData);
     setIsModalOpen(false);
   };
 
@@ -37,32 +35,45 @@ const App = ({isModalOpen,setIsModalOpen,bookingData}:any) => {
   };
 
   return (
-    <>
-     
-      <Modal title="Booking Data" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <div>
-        <div className='flex justify-center items-center'>
-            <Image src={bookingData?.imageUrl} alt="booking_image" width={300} height={200}/>
+   <div className="w-[300px]">
+     <Modal
+      title="Booking Data"
+      open={isModalOpen}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    >
+      <div>
+        <div className="flex justify-center items-center">
+          <Image
+            src={bookingData?.imageUrl}
+            alt="booking_image"
+            width={400}
+            height={180}
+          />
         </div>
-        </div>
-        <div>
-          <p>Name</p>
-        <Input defaultValue={bookingData?.name} placeholder="Basic usage" />
-        </div>
-        <div>
-          <p>Price</p>
-        <Input defaultValue={bookingData?.price} placeholder="Basic usage" />
-        </div>
-        <div>
-          <p>Description</p>
-        <Input defaultValue={bookingData?.description} placeholder="Basic usage" />
-        </div>
-        <div>
-          <p>Booking date</p>
-        <DatePicker onChange={handleDateChange} className='w-full' />
-        </div>
-      </Modal>
-    </>
+      </div>
+      <div className="mt-5">
+        <p> <span className="text-[15px] mt-2 font-semibold"> Name : </span> <span className="text-[14px] font-semibold">{bookingData?.name}</span> </p>
+      </div>
+      <div>
+           <p> <span className="text-[15px] mt-2 font-semibold"> Price : </span> <span className="text-[14px] font-semibold">{bookingData?.price}</span> </p>
+      </div>
+      <div>
+           <p> <span className="text-[15px] mt-2 font-semibold"> Description : </span> <span className="">{bookingData?.description}</span> </p>
+      </div>
+      {/* <div>
+        <p>Description</p>
+        <Input
+          defaultValue={bookingData?.description}
+          placeholder="Basic usage"
+        />
+      </div> */}
+      <div className="flex items-center mt-2">
+        <p className="text-[15px] font-semibold mr-4">Booking date :</p>
+        <DatePicker onChange={handleDateChange} className="h-6" />
+      </div>
+    </Modal>
+   </div>
   );
 };
 

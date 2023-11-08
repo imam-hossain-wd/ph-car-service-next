@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { getErrorMessageByPropertyName } from "@/utils/achemaValidator";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
 import type { UploadChangeParam } from "antd/es/upload";

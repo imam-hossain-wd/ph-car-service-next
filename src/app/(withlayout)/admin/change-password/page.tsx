@@ -1,5 +1,3 @@
-
-
 const ChangeAdminAccountPassword = () => {
     return (
         <div>

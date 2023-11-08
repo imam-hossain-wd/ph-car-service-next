@@ -16,7 +16,7 @@ import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
 import ActionBar from "@/components/ui/actionBar/ActionBar";
 import UMTable from "@/components/ui/CSTable/CSTable";
 import { useAdminsQuery } from "@/redux/api/adminApi";
-import { useUsersQuery } from "@/redux/api/userApi";
+import { useGetUserQuery } from "@/redux/api/userApi";
 
 const AdminPage = () => {
 
@@ -33,7 +33,7 @@ const AdminPage = () => {
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   
-  const {data, isLoading}= useUsersQuery({ ...query });
+  const {data, isLoading}= useGetUserQuery(undefined);
 console.log(data, 'useradmin');
 
 const users = data?.admins;

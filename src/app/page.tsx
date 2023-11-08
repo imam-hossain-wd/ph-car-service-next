@@ -4,7 +4,7 @@ import SearchFiltering from "@/components/ui/searchFiltering/searchFiltering"
 
 export default async function Home () {
   return (
-    <div className="mt-5">
+    <div className="mt-5 w-[90%] mx-auto">
       <HomePage />
       <HomeBanner /> 
     </div>

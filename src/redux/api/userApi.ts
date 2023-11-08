@@ -12,23 +12,14 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags:[tagTypes.user]
     }),
-    users: build.query({
-      query: (arg: Record<string, any>) => {
-        return {
-          url: "/user",
-          method: "GET",
-          params: arg,
-        };
-      },
-      // transformResponse: (response: IAdmin[], meta: IMeta) => {
-      //   return {
-      //     admins: response,
-      //     meta,
-      //   };
-      // },
-      providesTags: [tagTypes.user],
-    }),
+    getUser: build.query({
+      query: () => ({
+        url: "/user", // Replace with the actual URL for fetching users
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user], // Optional: Use tags if necessary
+    }),  
   }),
 })
 
-export const { useCreateUserMutation,useUsersQuery } = userApi
+export const { useCreateUserMutation,useGetUserQuery } = userApi

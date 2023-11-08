@@ -22,11 +22,12 @@ const LoginPage = () => {
   const [createUser] = useCreateUserMutation();
   const imageHostKey = "e916bef22f10e9479c65eb72495de035";
   const onSubmit: SubmitHandler<FormValues> = (values: any) => {
+
     try {
       const obj = { ...values };
       const file = obj["file"];
       delete obj["file"];
-      // const data = JSON.stringify(obj);
+      const data = JSON.stringify(obj);
 
       message.loading("Creating User");
       const formData = new FormData();
@@ -92,11 +93,11 @@ const LoginPage = () => {
                 label="Contact No"
               />
             </div>
-           <div className="flex">
+           {/* <div className="flex flex-col"> */}
            <div className="my-2 mr-5">
               <UploadImage name="file" />
             </div>
-            <div className="my-2 w-60">
+            <div className="my-2">
               <FormSelectField
                 size="large"
                 name="gender"
@@ -105,7 +106,7 @@ const LoginPage = () => {
                 placeholder="Select"
               />
             </div>
-           </div>
+           {/* </div> */}
             <div className="my-2">
               <FormInput
                 name="password"

@@ -64,7 +64,7 @@ const SearchFiltering = () => {
     setSearchTerm("");
   };
   return (
-    <div className="flex justify-around items-center mb-5">
+    <div className="flex justify-around rounded items-center mb-5">
       <form
         onSubmit={handleSubmit(onFilterSubmit)}
         className="flex justify-around items-center"
@@ -98,10 +98,10 @@ const SearchFiltering = () => {
           </select>
         </div>
 
-        <Button htmlType="submit" type="primary" className="mr-3">
+        <Button htmlType="submit" className="mr-3 bg-gray-700 text-white border-0 px-5 hover:bg-gray-800 text-[15px] font-semibold">
           Apply Filtering
         </Button>
-        <Button onClick={handleClearFilters} type="primary">
+        <Button className="bg-gray-700 text-white border-0 px-5 hover:bg-gray-800 font-semibold text-[15px]" onClick={handleClearFilters} >
           Clear Filtering
         </Button>
       </form>
@@ -112,7 +112,7 @@ const SearchFiltering = () => {
           className="input focus:outline-none rounded border input-sm h-7 mr-2"
           {...register("searchName")}
         />
-        <Button htmlType="submit" type="primary">
+        <Button className="bg-gray-700 text-white border-0 px-5 hover:bg-gray-800 font-semibold text-[15px]"  htmlType="submit">
           Search
         </Button>
       </form>

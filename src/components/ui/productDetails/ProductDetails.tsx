@@ -13,8 +13,7 @@ const ProductDetails = (data: any) => {
   const { id, name, imageUrl, availability, price, description } = data?.data;
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  console.log(bookingData);
-  // console.log(cartItems, 'cartitems,,,,');
+  
   const HandleAddToCart = (productDetails: any):any => {
     dispatch(addToCart(productDetails))
   };

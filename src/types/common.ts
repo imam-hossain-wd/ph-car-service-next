@@ -46,6 +46,8 @@ export type IUserRegisterProps = {
 };
 
 export type IReview = {
+  id: string;
+  user: any;
   userId: string;
   serviceId: string;
   rating: number;

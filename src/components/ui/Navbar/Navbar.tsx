@@ -38,8 +38,8 @@ const Navbar = () => {
               </Button>
             </div>
           ) : (
-            <Button danger type="text">
-              Login
+            <Button type="text" >
+            <Link href="/login">  Login</Link>
             </Button>
           )}
         </div>

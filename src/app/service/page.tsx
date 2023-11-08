@@ -15,7 +15,9 @@ const ServicePage = async () => {
 
   return (
     <div>
-      <SearchFiltering />
+     <div className="mt-5">
+     <SearchFiltering />
+     </div>
       <h2 className="text-center my-5">Quality Car Care Solutions</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {datas && datas.map((service: any) => (

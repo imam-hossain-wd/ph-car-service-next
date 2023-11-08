@@ -23,8 +23,9 @@ const Review = ({id}:any) => {
         formState: { errors },
       } = useForm<Inputs>()
 
-      const user = getUserInfo();
-      console.log(data, 'data...')
+      const user:any = getUserInfo();
+      // console.log(data, 'data...')
+
 
       const handleReview: SubmitHandler<Inputs> =async (data) =>{
         const review = parseInt(data?.review);

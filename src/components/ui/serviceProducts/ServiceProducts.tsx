@@ -1,23 +1,41 @@
+"use client"
+
 import { Button } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import BookingModal from '../BookingModal/BookingModal'
 
 const ServiceProductsPage = ({ service}: any) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingData , setBookingData]= useState(null);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
   return (
-    <div className="shadow-2xl w-[90%] mx-auto p-5" >
-      <Link href={`/service/${service?.id}`} className="w-full no-underline">
-        <Image src={service?.imageUrl} alt="product" width={360} height={200} />
-        <h1 className="text-xl font-semibold text-black ">{service?.name}</h1>
+    <div className="shadow-2xl mx-auto p-5 w-[350px] rounded-lg" >
+      <Link href={`/service/${service?.id}`} className=" no-underline">
+        <div className="flex justify-center">
+        <Image className="rounded" src={service?.imageUrl} alt="product" width={300} height={200} />
+        </div>
+        <h4 className=" my-2 font-semibold text-black ">{service?.name}</h4>
       </Link>
       <p>Rating: {service?.price}</p>
-      <p className="text-sm">
+      <p className="mt-2 text-md">
         Availability: {service?.availability ? "In stock" : "Out of stock"}
-      </p>
-      <p className="text-sm">Price: {service?.description.slice(0,150)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
+      </p> 
+      <p className="my-2 text-md">Descritpion: {service?.description.slice(0,120)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
      <div className="flex justify-center items-center my-3">
-     <Button className="bg-sky-400 hover:text-white border-0 text-bold mr-5">Add to cart</Button>
-      <Button className="bg-sky-400 hover:text-white border-0 text-bold">Booking</Button>
+     <Button className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button>
+      <Button   onClick={() => {
+    setBookingData(service);
+    showModal();
+  }} className="bg-gray-700 text-[15px] hover:bg-gray-800 font-semibold  w-28 h-8 text-white border-0 text-bold">
+        Booking</Button>
      </div>
+
+     <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bookingData={bookingData} />
     </div>
   );
 };
