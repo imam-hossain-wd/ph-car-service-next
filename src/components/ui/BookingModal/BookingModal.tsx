@@ -20,8 +20,7 @@ const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
     serviceId: bookingData?.id,
     date: myDate ? moment(myDate).format("YYYY-MM-DDTHH:mm:ss[Z]") : "",
   };
-  console.log(BookingData, "bbdata");
-
+  
   const handleDateChange = (date: any) => {
     setMyDate(date);
   };

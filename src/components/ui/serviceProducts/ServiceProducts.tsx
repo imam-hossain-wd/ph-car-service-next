@@ -5,11 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import BookingModal from '../BookingModal/BookingModal'
+import ConfirmationModel from "../confirmation-model/ConfirmationModel";
 
 const ServiceProductsPage = ({ service}: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingData , setBookingData]= useState(null);
 
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [cartData, setCartData]= useState(null)
+
+  // console.log(cartData, 'ccdtaa');
+  const showcartModel = ()=> {
+    setIsCartModalOpen(true)
+  }
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -27,7 +35,11 @@ const ServiceProductsPage = ({ service}: any) => {
       </p> 
       <p className="my-2 text-md">Descritpion: {service?.description.slice(0,120)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
      <div className="flex justify-center items-center my-3">
-     <Button className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button>
+     <Button  onClick={() => {
+    setCartData(service);
+    showcartModel();
+  }}  className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button>
+
       <Button   onClick={() => {
     setBookingData(service);
     showModal();
@@ -36,6 +48,8 @@ const ServiceProductsPage = ({ service}: any) => {
      </div>
 
      <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bookingData={bookingData} />
+
+     <ConfirmationModel  isCartModalOpen={isCartModalOpen} setIsCartModalOpen={setIsCartModalOpen} cartData={cartData}/>
     </div>
   );
 };
