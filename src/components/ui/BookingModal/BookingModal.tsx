@@ -34,8 +34,9 @@ const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
   };
 
   return (
-   <div className="w-[300px]">
+ 
      <Modal
+    width={500}
       title="Booking Data"
       open={isModalOpen}
       onOk={handleOk}
@@ -72,7 +73,7 @@ const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
         <DatePicker onChange={handleDateChange} className="h-6" />
       </div>
     </Modal>
-   </div>
+
   );
 };
 

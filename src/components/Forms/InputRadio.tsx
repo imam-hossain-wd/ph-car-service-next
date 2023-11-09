@@ -6,7 +6,7 @@ import { Radio } from 'antd';
 const plainOptions = ['Male', 'Female', 'Other'];
 
 const InputRadio = () => {
-  const [value, setValue] = useState('Apple');
+  const [value, setValue] = useState('Male');
 
   const onChange1 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio1 checked', value);

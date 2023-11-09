@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <Layout className="layout ">
       <Header className="flex justify-between items-center bg-white text-black">
-        <div>
+        <div className="-ml-16 lg:-ml-10">
           <Link className="flex justify-center items-center" href="/">
             <Image
               className="w-12 h-12 ml-16 "
@@ -59,8 +59,8 @@ const Navbar = () => {
               height={100}
               alt="Picture of the author"
             />
-            <h1 className="text-black  ml-3">
-              Car <span className="text-red-500 -ml-2">Dev</span>
+            <h1 className="text-black flex  ml-3">
+              Car <span className="text-red-500">Dev</span>
             </h1>
           </Link>
         </div>
