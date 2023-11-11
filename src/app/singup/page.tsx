@@ -22,7 +22,6 @@ const LoginPage = () => {
   const [createUser] = useCreateUserMutation();
   const imageHostKey = "e916bef22f10e9479c65eb72495de035";
   const onSubmit: SubmitHandler<FormValues> = (values: any) => {
-
     try {
       const obj = { ...values };
       const file = obj["file"];
@@ -46,7 +45,7 @@ const LoginPage = () => {
             ...obj,
             userImage: imgData.data.url,
           };
-          console.log(userData)
+          console.log(userData);
           createUser(userData);
           message.success("User create successfully");
           router.push("/login");
@@ -58,15 +57,11 @@ const LoginPage = () => {
 
   return (
     <div className="shadow-2xl">
-
-  
-    <Row className=" flex justify-center items-center "
-    >
-      <Col sm={12} md={8} lg={8}>
-        <h1 className="text-center my-2">Register Form</h1>
-        <div>
+        <h2 className="text-center my-2 bg-gray-100 p-2 w-72 mt-5 mx-auto">Register Form</h2>
+        <div className="w-[40%] mx-auto ">
           <Form submitHandler={onSubmit} resolver={yupResolver(userSchema)}>
-            <div className="my-2">
+           <div className="grid grid-cols-2 gap-5">
+           <div className="">
               <FormInput
                 name="firstName"
                 type="text"
@@ -74,7 +69,7 @@ const LoginPage = () => {
                 label="First Name"
               />
             </div>
-            <div className="my-2">
+            <div className="">
               <FormInput
                 name="lastName"
                 type="text"
@@ -85,7 +80,7 @@ const LoginPage = () => {
             <div>
               <FormInput name="email" type="text" size="large" label="Email" />
             </div>
-            <div className="my-2">
+            <div className="">
               <FormInput
                 name="contactNo"
                 type="number"
@@ -93,11 +88,9 @@ const LoginPage = () => {
                 label="Contact No"
               />
             </div>
-           {/* <div className="flex flex-col"> */}
-           <div className="my-2 mr-5">
-              <UploadImage name="file" />
-            </div>
-            <div className="my-2">
+            {/* <div className="flex flex-col"> */}
+          
+            <div className="">
               <FormSelectField
                 size="large"
                 name="gender"
@@ -106,8 +99,9 @@ const LoginPage = () => {
                 placeholder="Select"
               />
             </div>
-           {/* </div> */}
-            <div className="my-2">
+         
+            {/* </div> */}
+            <div className="">
               <FormInput
                 name="password"
                 type="password"
@@ -115,13 +109,15 @@ const LoginPage = () => {
                 label="User Password"
               />
             </div>
-            <Button type="primary" htmlType="submit">
-              Login
+            <div className="">
+              <UploadImage name="file" />
+            </div>
+           </div>
+           <Button className="mt-5 w-60 mx-auto" type="primary" htmlType="submit">
+              Sing up
             </Button>
           </Form>
         </div>
-      </Col>
-    </Row>
     </div>
   );
 };

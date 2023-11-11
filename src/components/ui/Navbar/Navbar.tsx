@@ -8,12 +8,14 @@ import {
   MenuProps,
   Space,
   theme,
+  Drawer,
 } from "antd";
 import Link from "next/link";
-import { UserOutlined } from "@ant-design/icons";
+import { MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { IsUserLoggedIn, removeUserInfo } from "@/services/auth.service";
 import Image from "next/image";
 import { authKey } from "@/constants/storageKey";
+import { useState } from "react";
 
 const { Header } = Layout;
 
@@ -21,6 +23,16 @@ const Navbar = () => {
   const loggedUser = IsUserLoggedIn();
   const handleLogOut = () => {
     removeUserInfo(authKey);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
   };
 
   const items: MenuProps["items"] = [
@@ -38,8 +50,8 @@ const Navbar = () => {
               </Button>
             </div>
           ) : (
-            <Button type="text" >
-            <Link href="/login">  Login</Link>
+            <Button type="text">
+              <Link href="/login"> Login</Link>
             </Button>
           )}
         </div>
@@ -64,7 +76,7 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="-ml-[99999px] lg:ml-0 ">
           <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
               <Link href="/">Home</Link>
@@ -78,15 +90,55 @@ const Navbar = () => {
             <Menu.Item key="4">
               <Link href="/contact">Contact</Link>
             </Menu.Item>
+            <Menu.Item key="4">
+              <Dropdown menu={{ items }}>
+                <a>
+                  <Space wrap size={20}>
+                    <Avatar
+                      className="text-[14px]"
+                      size="large"
+                      icon={<UserOutlined />}
+                    />
+                  </Space>
+                </a>
+              </Dropdown>
+            </Menu.Item>
           </Menu>
-          <Dropdown menu={{ items }}>
-            <a>
-              <Space wrap size={16}>
-                <Avatar size="large" icon={<UserOutlined />} />
-              </Space>
-            </a>
-          </Dropdown>
         </div>
+        <Button className="lg:hidden" onClick={showDrawer}>
+          <MenuOutlined />
+        </Button>
+        <Drawer
+          title={
+            <div className="ml-4">
+              <Dropdown menu={{ items }}>
+                <a>
+                  <Space wrap size={16}>
+                    <Avatar size="large" icon={<UserOutlined />} />
+                  </Space>
+                </a>
+              </Dropdown>
+            </div>
+          }
+          placement="right"
+          onClose={onClose}
+          open={open}
+        >
+          <Menu mode="vertical" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="1">
+              <Link href="/">Home</Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Link href="/service">Services</Link>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <Link href="/about">About</Link>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Link href="/contact">Contact</Link>
+            </Menu.Item>
+          </Menu>
+        </Drawer>
       </Header>
     </Layout>
   );
