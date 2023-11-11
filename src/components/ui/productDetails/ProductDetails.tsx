@@ -62,7 +62,7 @@ const ProductDetails = (data: any) => {
               showcartModel();
             }}
           >
-            Booking
+            Add To Cart
           </Button>
 
           <Button

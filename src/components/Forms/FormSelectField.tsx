@@ -43,7 +43,8 @@ const FormSelectField = ({
             size={size}
             options={options}
             value={value}
-            style={{ width: "100%" }}
+            // style={{ width: "100%" }}
+            className="w-full mt-2"
             placeholder={placeholder}
           />
         )}

@@ -42,6 +42,7 @@ const FormInput = ({
             <Input.Password
               type={type}
               size={size}
+              className="mt-2"
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
@@ -50,6 +51,7 @@ const FormInput = ({
             <Input
               type={type}
               size={size}
+              className="mt-2"
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
