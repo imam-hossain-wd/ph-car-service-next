@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   DeleteOutlined,
   EditOutlined,
-  FilterOutlined,
   ReloadOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
@@ -14,7 +13,7 @@ import dayjs from "dayjs";
 import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
 import ActionBar from "@/components/ui/actionBar/ActionBar";
 import UMTable from "@/components/ui/CSTable/CSTable";
-import { useAdminsQuery } from "@/redux/api/adminApi";
+import { useBookingQuery } from "@/redux/api/bookingApi";
 
 const BookingPage = () => {
 
@@ -30,46 +29,36 @@ const BookingPage = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-  
-  const {data, isLoading}= useAdminsQuery({ ...query });
-// console.log(data, 'dataadmin');
+  const {data, isLoading}= useBookingQuery({ ...query });
 
-const booking = data?.booking;
-const meta = data?.meta;
+// const booking = data?.booking;
+// const meta = data?.meta;
+
+// data.user.contactNo
 
   const columns = [
-    {
-      title: "Booking Id",
-      dataIndex: "id",
-      sorter: true,
-    },
+
     {
       title: "Booking Name",
-      dataIndex: "name",
-      render: function (data: Record<string, string>) {
-        const fullName = `${data?.firstName} ${data?.middleName} ${data?.lastName}`;
-        return <>{fullName}</>;
-      },
+      dataIndex: "bookingName",
     },
-    {
-      title: "Service Id",
-      dataIndex: "serviceId",
+   {
+    title: "Contact No",
+    dataIndex: "user",
+    render: function (user: any) {
+      return user && user.contactNo;
     },
-    {
-      title: "Email",
-      dataIndex: "email",
+  },
+   {
+    title: "Contact No",
+    dataIndex: "user",
+    render: function (user: any) {
+      return user && user.email;
     },
+  },
     {
       title: "Date",
       dataIndex: "date",
-    },
-    {
-      title: "Created at",
-      dataIndex: "createdAt",
-      render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
-      },
-      sorter: true,
     },
     {
       title: "Action",
@@ -77,12 +66,12 @@ const meta = data?.meta;
       render: function (data: any) {
         return (
           <>
-            <Link href={`/super_admin/admin/details/${data.id}`}>
+            <Link href={`/user/booking/details/${data.id}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EyeOutlined />
               </Button>
             </Link>
-            <Link href={`/super_admin/admin/edit/${data?.id}`}>
+            <Link href={`/user/booking/edit/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",
@@ -137,9 +126,6 @@ const meta = data?.meta;
           }}
         />
         <div>
-          <Link href="/super_admin/admin/create">
-            <Button type="primary">Create Admin</Button>
-          </Link>
           {(!!sortBy || !!sortOrder || !!searchTerm) && (
             <Button
               style={{ margin: "0px 5px" }}
@@ -157,7 +143,6 @@ const meta = data?.meta;
         columns={columns}
         dataSource={data}
         pageSize={size}
-        totalPages={meta?.total}
         showSizeChanger={true}
         onPaginationChange={onPaginationChange}
         onTableChange={onTableChange}

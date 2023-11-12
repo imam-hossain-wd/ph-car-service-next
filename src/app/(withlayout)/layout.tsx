@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const loggedUser = IsUserLoggedIn();
-  console.log(loggedUser);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

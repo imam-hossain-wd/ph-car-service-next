@@ -21,12 +21,12 @@ const UserProfile = () => {
     if(isLoading){
        return  <p>Loading....</p>
     }
-    console.log(data, 'userdata...per');
+    console.log(data?.data[1], 'userdata...per');
     return (
         <div>
             <h1>This is user profile</h1>
             <div>
-                <Image src={'/'} width={100} height={100} alt="profile image" />
+                <Image className="w-20 h-20 rounded-full" src={data?.data[1]?.userImage} width={200} height={200} alt="profile image" />
             </div>
         </div>
     );

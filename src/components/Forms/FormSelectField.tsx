@@ -11,7 +11,7 @@ export type SelectOptions = {
 type SelectFieldProps = {
   options: SelectOptions[];
   name: string;
-  size?: "large" | "small";
+  size?: "large" | "small" | "middle";
   value?: string | string[] | undefined;
   placeholder?: string;
   label?: string;
@@ -21,7 +21,7 @@ type SelectFieldProps = {
 
 const FormSelectField = ({
   name,
-  size = "large",
+  size = "small",
   value,
   placeholder = "select",
   options,
@@ -43,8 +43,7 @@ const FormSelectField = ({
             size={size}
             options={options}
             value={value}
-            // style={{ width: "100%" }}
-            className="w-full mt-2"
+            className="w-full mt-2 "
             placeholder={placeholder}
           />
         )}

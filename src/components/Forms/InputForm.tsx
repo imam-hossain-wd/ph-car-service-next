@@ -6,7 +6,7 @@ import { useFormContext, Controller } from "react-hook-form";
 interface IInput {
   name: string;
   type?: string;
-  size?: "large" | "small";
+  size?: "large" | "small" | "middle";
   value?: string | string[] | undefined;
   id?: string;
   placeholder?: string;

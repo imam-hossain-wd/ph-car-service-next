@@ -90,7 +90,7 @@ const Navbar = () => {
             <Menu.Item key="4">
               <Link href="/contact">Contact</Link>
             </Menu.Item>
-            <Menu.Item key="4">
+            <Menu.Item key="5">
               <Dropdown menu={{ items }}>
                 <a>
                   <Space wrap size={20}>

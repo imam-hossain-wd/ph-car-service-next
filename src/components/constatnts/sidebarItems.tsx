@@ -4,7 +4,8 @@ import {
   TableOutlined,
   AppstoreOutlined,
   ScheduleOutlined,
-  ThunderboltOutlined
+  ThunderboltOutlined,
+  ShoppingCartOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
@@ -82,7 +83,7 @@ export const sidebarItems = (role: string) => {
     },
     {
       label: <Link href={`/${role}/cartlist`}>Cart List</Link>,
-      icon: <ThunderboltOutlined />,
+      icon: <ShoppingCartOutlined />,
       key: `/${role}/cartlist`,
     }
   ];

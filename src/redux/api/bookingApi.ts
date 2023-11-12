@@ -14,20 +14,13 @@ export const bookingApi = baseApi.injectEndpoints({
       invalidatesTags:[tagTypes.booking]
     }),
     booking: build.query({
-      query: (arg: Record<string, any>) => {
+      query: () => {
         return {
-          url: "/admin",
-          method: "GET",
-          params: arg,
+          url: "/booking",
+          method: "GET"
         };
       },
-      // transformResponse: (response: IAdmin[], meta: IMeta) => {
-      //   return {
-      //     admins: response,
-      //     meta,
-      //   };
-      // },
-      providesTags: [tagTypes.admin],
+      providesTags: [tagTypes.booking],
     }),
   }),
 })

@@ -12,6 +12,28 @@ export const genderOptions = [
         value:"others"
     },
 ]
+export const sortOptions = [
+    {
+        label: "Name",
+        value:"name"
+    },
+    {
+        label: "Price",
+        value:"price"
+    },
+  
+]
+export const orderOptions = [
+    {
+        label: "ASC",
+        value:"asc"
+    },
+    {
+        label: "DESC",
+        value:"desc"
+    },
+  
+]
 export const departmentOptions = [
     {
         label: "HR",

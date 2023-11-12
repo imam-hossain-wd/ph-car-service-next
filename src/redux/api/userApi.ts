@@ -14,12 +14,20 @@ export const userApi = baseApi.injectEndpoints({
     }),
     getUser: build.query({
       query: () => ({
-        url: "/user", // Replace with the actual URL for fetching users
+        url: "/user", 
         method: "GET",
       }),
-      providesTags: [tagTypes.user], // Optional: Use tags if necessary
-    }),  
+      providesTags: [tagTypes.user],
+    }), 
+    getUserById: build.query({
+      query: (userId) => ({
+        url: `/user/${userId}`,
+        method: "GET",
+      }),
+      providesTags: (result, error, userId) =>
+        userId ? [{ type: tagTypes.user, id: userId }] : [],
+    }), 
   }),
 })
 
-export const { useCreateUserMutation,useGetUserQuery } = userApi
+export const { useCreateUserMutation,useGetUserQuery,useGetUserByIdQuery} = userApi
