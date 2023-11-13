@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import CartModel from "@/components/ui/confirmation-model/Confirmation-Model";
 import DeleteModel from "@/components/ui/confirmation-model/DeleteModel";
 import Loading from "@/app/loading";
+import Image from "next/image";
 
 const BookingPage = () => {
 
@@ -44,13 +45,26 @@ if(isLoading){
   return <Loading />
 }
   const handleDelete = (bookingId: number) => {
-    // deleteBooking(bookingId);
+    deleteBooking(bookingId);
     console.log(data?.bookingName);
     message.success(`${data?.bookingName} Delete Successful`)
   };
 
   const columns = [
 
+    {
+      title: "Booking Image",
+      dataIndex: "bookingImage",
+      render: (bookingImage: string) => (
+        <Image
+          className="w-20 h-20 rounded"
+          src={bookingImage}
+          alt="Product"
+          width={100}
+          height={100}
+        />
+      ),
+    },
     {
       title: "Booking Name",
       dataIndex: "bookingName",
@@ -63,7 +77,7 @@ if(isLoading){
     },
   },
    {
-    title: "Contact No",
+    title: "Email",
     dataIndex: "user",
     render: function (user: any) {
       return user && user.email;
@@ -75,7 +89,7 @@ if(isLoading){
     },
     {
       title: "Action",
-      dataIndex: "data",
+      dataIndex: "id",
       render: function (data: any) {
         return (
           <>

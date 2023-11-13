@@ -15,6 +15,7 @@ const UserProfile = () => {
   if (isError) {
     console.error(isError);
   }
+  console.log(data, 'user image..')
 
   return (
     <div className="w-[60%] mx-auto mt-10">

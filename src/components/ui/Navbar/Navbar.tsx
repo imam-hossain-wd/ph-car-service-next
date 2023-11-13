@@ -7,20 +7,27 @@ import {
   Menu,
   MenuProps,
   Space,
-  theme,
   Drawer,
 } from "antd";
 import Link from "next/link";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
-import { IsUserLoggedIn, removeUserInfo } from "@/services/auth.service";
+import {
+  IsUserLoggedIn,
+  getUserInfo,
+  removeUserInfo,
+} from "@/services/auth.service";
 import Image from "next/image";
 import { authKey } from "@/constants/storageKey";
 import { useState } from "react";
+import { useGetUserByIdQuery } from "@/redux/api/userApi";
 
 const { Header } = Layout;
 
 const Navbar = () => {
   const loggedUser = IsUserLoggedIn();
+  //@ts-ignore
+  const { id } = getUserInfo();
+  const { data } = useGetUserByIdQuery(id);
   const handleLogOut = () => {
     removeUserInfo(authKey);
   };

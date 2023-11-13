@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DatePicker, Input, Modal } from "antd";
+import { DatePicker, Input, Modal, message } from "antd";
 import Image from "next/image";
 import { useAddBookingMutation } from "@/redux/api/bookingApi";
 import moment from "moment";
@@ -17,6 +17,7 @@ const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
     bookingName: bookingData?.name,
     //@ts-ignore
     userId: user?.id,
+    bookingImage: bookingData?.imageUrl,
     serviceId: bookingData?.id,
     date: myDate ? moment(myDate).format("YYYY-MM-DDTHH:mm:ss[Z]") : "",
   };
@@ -27,6 +28,7 @@ const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
   const handleOk = () => {
     addBooking(BookingData);
     setIsModalOpen(false);
+    message.success("Booking create successfully")
   };
 
   const handleCancel = () => {

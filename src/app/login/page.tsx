@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Button, Col, Input, Row, Space, message } from "antd";
+import { Button, Col,Row, message } from "antd";
 import Form from "@/components/Forms/Form";
 import { SubmitHandler } from "react-hook-form";
 import FormInput from "@/components/Forms/InputForm";
@@ -19,15 +19,15 @@ const LoginPage = () => {
   const router = useRouter();
   const [userLogIn] = useUserLogInMutation();
 
-  //@ts-ignore
-  const { role } = getUserInfo();
+  const user = getUserInfo();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res = await userLogIn({ ...data }).unwrap();
 
       if (res?.accessToken) {
-        router.push(`${role}/profile`);
+        //@ts-ignore
+        user.role && router.push(`${ user?.role}/profile`);
         message.success("Login Successful");
       }
       storeUserInto({ accessToken: res?.accessToken });

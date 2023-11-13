@@ -20,15 +20,17 @@ export const adminApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      // transformResponse: (response: IAdmin[], meta: IMeta) => {
-      //   return {
-      //     admins: response,
-      //     meta,
-      //   };
-      // },
       providesTags: [tagTypes.admin],
     }),
+
+    getAdminById: build.query({
+      query: (userId) => ({
+        url: `/admin/${userId}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.admin],
+    }), 
   }),
 })
 
-export const { useCreateAdminMutation, useAdminsQuery } = adminApi
+export const { useCreateAdminMutation, useAdminsQuery, useGetAdminByIdQuery } = adminApi

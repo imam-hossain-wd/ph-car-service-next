@@ -13,8 +13,6 @@ const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const {role} = getUserInfo() as any;
-  console.log(role, 'user role');
- 
   return (
     <Sider
     className="bg-white text-black"

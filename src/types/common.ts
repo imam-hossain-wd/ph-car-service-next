@@ -34,6 +34,7 @@ export type IBookingData = {
   userId: string;
   serviceId: string;
   date: string;
+  bookingImage:string;
 };
 
 export type IUserRegisterProps = {
