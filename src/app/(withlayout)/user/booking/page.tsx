@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
 import Link from "next/link";
 import {
   DeleteOutlined,
@@ -13,9 +13,15 @@ import dayjs from "dayjs";
 import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
 import ActionBar from "@/components/ui/actionBar/ActionBar";
 import UMTable from "@/components/ui/CSTable/CSTable";
-import { useBookingQuery } from "@/redux/api/bookingApi";
+import { useBookingQuery, useDeleteBookingMutation } from "@/redux/api/bookingApi";
+import { useDispatch } from "react-redux";
+import CartModel from "@/components/ui/confirmation-model/Confirmation-Model";
+import DeleteModel from "@/components/ui/confirmation-model/DeleteModel";
+import Loading from "@/app/loading";
 
 const BookingPage = () => {
+
+  const dispatch = useDispatch()
 
   const query: Record<string, any> = {};
   
@@ -30,11 +36,18 @@ const BookingPage = () => {
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   const {data, isLoading}= useBookingQuery({ ...query });
+  const [deleteBooking]= useDeleteBookingMutation();
 
-// const booking = data?.booking;
-// const meta = data?.meta;
-
-// data.user.contactNo
+console.log(data, 'bkdata');
+ 
+if(isLoading){
+  return <Loading />
+}
+  const handleDelete = (bookingId: number) => {
+    // deleteBooking(bookingId);
+    console.log(data?.bookingName);
+    message.success(`${data?.bookingName} Delete Successful`)
+  };
 
   const columns = [
 
@@ -62,27 +75,28 @@ const BookingPage = () => {
     },
     {
       title: "Action",
-      dataIndex: "id",
+      dataIndex: "data",
       render: function (data: any) {
         return (
           <>
-            <Link href={`/user/booking/details/${data.id}`}>
+            <Link href={`/user/booking/details/${data}`}>
               <Button onClick={() => console.log(data)} type="primary">
                 <EyeOutlined />
               </Button>
             </Link>
-            <Link href={`/user/booking/edit/${data?.id}`}>
+            <Link href={`/user/booking/edit/${data}`}>
               <Button
                 style={{
                   margin: "0px 5px",
                 }}
-                onClick={() => console.log(data?.id)}
+                onClick={() => console.log(data)}
                 type="primary"
               >
                 <EditOutlined />
               </Button>
             </Link>
-            <Button onClick={() => console.log(data)} type="primary" danger>
+            
+            <Button onClick={() =>handleDelete(data) } type="primary" danger>
               <DeleteOutlined />
             </Button>
           </>
@@ -116,28 +130,8 @@ const BookingPage = () => {
           },
         ]}
       />
-      <ActionBar title="Booking List">
-        <Input
-          size="large"
-          placeholder="Search"
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            width: "20%",
-          }}
-        />
-        <div>
-          {(!!sortBy || !!sortOrder || !!searchTerm) && (
-            <Button
-              style={{ margin: "0px 5px" }}
-              type="primary"
-              onClick={resetFilters}
-            >
-              <ReloadOutlined />
-            </Button>
-          )}
-        </div>
-      </ActionBar>
-
+    
+<br/>
       <UMTable
         loading={isLoading}
         columns={columns}

@@ -53,23 +53,14 @@ export const sidebarItems = (role: string) => {
 
   const superAdminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
-    ...commonAdminSidebarItems,
     {
       label: <Link href={`/${role}/admin`}>Manage Admin</Link>,
       icon: <TableOutlined />,
       key: `/${role}/admin`,
     },
-    // {
-    //   label: "Management booking",
-    //   key: "management",
-    //   icon: <AppstoreOutlined />,
-    //   children: [
-    //     {
-    //       label: <Link href={`/${role}/booking`}>Booking</Link>,
-    //       key: `/${role}/department`,
-    //     },
-    //   ],
-    // },
+   
+    ...commonAdminSidebarItems,
+
   ];
 
  

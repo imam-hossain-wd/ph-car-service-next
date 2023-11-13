@@ -17,7 +17,7 @@ type FormValues = {
   password: string;
 };
 
-const LoginPage = () => {
+const SingUpPage = () => {
   const router = useRouter();
   const [createUser] = useCreateUserMutation();
   const imageHostKey = "e916bef22f10e9479c65eb72495de035";
@@ -32,7 +32,7 @@ const LoginPage = () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      console.log(obj);
+      console.log(formData);
 
       const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
       fetch(url, {
@@ -122,4 +122,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SingUpPage;

@@ -1,35 +1,44 @@
-
-"use client"
-import { useGetUserQuery } from "@/redux/api/userApi";
+"use client";
+import Loading from "@/app/loading";
+import { useGetUserByIdQuery } from "@/redux/api/userApi";
+import { getUserInfo } from "@/services/auth.service";
 import Image from "next/image";
-import { useState } from "react";
 
 const UserProfile = () => {
-    const query: Record<string, any> = {};
-    // const [page, setPage] = useState<number>(1);
-    // const [size, setSize] = useState<number>(10);
-    // const [sortBy, setSortBy] = useState<string>("");
-    // const [sortOrder, setSortOrder] = useState<string>("");
-    // const [searchTerm, setSearchTerm] = useState<string>("");
-    
-    // query["limit"] = size;
-    // query["page"] = page;
-    // query["sortBy"] = sortBy;
-    // query["sortOrder"] = sortOrder;
+  //@ts-ignore
+  const { id } = getUserInfo();
+  const { data, isLoading, isError } = useGetUserByIdQuery(id);
 
-    const { data, isLoading, isError, isSuccess } = useGetUserQuery(query);
-    if(isLoading){
-       return  <p>Loading....</p>
-    }
-    console.log(data?.data[1], 'userdata...per');
-    return (
-        <div>
-            <h1>This is user profile</h1>
-            <div>
-                <Image className="w-20 h-20 rounded-full" src={data?.data[1]?.userImage} width={200} height={200} alt="profile image" />
-            </div>
-        </div>
-    );
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (isError) {
+    console.error(isError);
+  }
+
+  return (
+    <div className="w-[60%] mx-auto mt-10">
+      <div>
+        <Image
+          className="w-96 h-72 rounded"
+          src={data?.userImage}
+          width={200}
+          height={200}
+          alt="profile image"
+        />
+      </div>
+
+      <div className="mt-3 text-md">
+        <p>
+          Name : {data?.firstName} {data?.lastName}
+        </p>
+        <p className="capitalize">Gender : {data?.gender}</p>
+        <p>Contact No: {data?.contactNo}</p>
+        <p>Email : {data?.email}</p>
+        <p>Role : {data?.role}</p>
+      </div>
+    </div>
+  );
 };
 
 export default UserProfile;

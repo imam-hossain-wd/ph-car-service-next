@@ -22,7 +22,14 @@ export const bookingApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.booking],
     }),
+    deleteBooking: build.mutation({
+      query: (bookingId: number) => ({
+        url: `/booking/${bookingId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.booking],
+    }),
   }),
 })
 
-export const { useAddBookingMutation , useBookingQuery} = bookingApi
+export const { useAddBookingMutation , useBookingQuery, useDeleteBookingMutation} = bookingApi

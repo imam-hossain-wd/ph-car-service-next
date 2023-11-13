@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   DeleteOutlined,
   EditOutlined,
-  FilterOutlined,
   ReloadOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
@@ -15,6 +14,7 @@ import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
 import ActionBar from "@/components/ui/actionBar/ActionBar";
 import UMTable from "@/components/ui/CSTable/CSTable";
 import { useAdminsQuery } from "@/redux/api/adminApi";
+import Image from "next/image";
 
 const AdminPage = () => {
 
@@ -32,52 +32,41 @@ const AdminPage = () => {
   query["sortOrder"] = sortOrder;
   
   const {data, isLoading}= useAdminsQuery({ ...query });
-console.log(data, 'dataadmin');
 
+console.log(data, 'admin table data');
 const admins = data?.admins;
 const meta = data?.meta;
 
   const columns = [
     {
-      title: "Id",
-      dataIndex: "id",
-      sorter: true,
+      title: "Image",
+      dataIndex: "userImage",
+      render: (userImage: string) => (
+        <Image
+          className="w-20 h-20 rounded-full"
+          src={userImage}
+          alt="Product"
+          width={100}
+          height={100}
+        />
+      ),
     },
     {
       title: "Name",
-      dataIndex: "name",
-      render: function (data: Record<string, string>) {
-        const fullName = `${data?.firstName} ${data?.middleName} ${data?.lastName}`;
-        return <>{fullName}</>;
-      },
+      dataIndex: "firstName",
     },
     {
       title: "Email",
       dataIndex: "email",
     },
-    // {
-    //   title: "Department",http://localhost:3000/super_admin/manage-users
-    //   dataIndex: "managementDepartment",
-    //   render: function (data: IDepartment) {
-    //     return <>{data?.title}</>;
-    //   },
-    // },
-    {
-      title: "Designation",
-      dataIndex: "designation",
-    },
-    {
-      title: "Created at",
-      dataIndex: "createdAt",
-      render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
-      },
-      sorter: true,
-    },
     {
       title: "Contact no.",
       dataIndex: "contactNo",
     },
+    {
+      title: "Designation",
+      dataIndex: "designation",
+    }, 
     {
       title: "Action",
       dataIndex: "id",
