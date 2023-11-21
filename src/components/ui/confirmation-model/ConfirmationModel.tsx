@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Modal, message } from "antd";
-import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
 
 const ConfirmationModel = ({
@@ -13,12 +12,10 @@ const ConfirmationModel = ({
 }: any) => {
 
 
-  const dispatch = useDispatch();
-  const cartItems = useAppSelector((state) => state.cart.items);
-
+  const dispatch = useAppDispatch();
   const handleOk = () => {
     message.success("Add To cart Successful");
-   dispatch( addToCart(cartData))
+   dispatch(addToCart(cartData))
     setIsCartModalOpen(false);
   };
 

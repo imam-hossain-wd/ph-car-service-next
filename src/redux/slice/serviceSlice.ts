@@ -1,7 +1,13 @@
-// serviceSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+interface ServiceState {
+  data: any;
+  searchTerm: string;
+  sortBy: string;
+  sortOrder: string;
+}
+
+const initialState: ServiceState = {
   data: null,
   searchTerm: '',
   sortBy: 'name',
@@ -12,16 +18,16 @@ export const serviceSlice = createSlice({
   name: 'service',
   initialState,
   reducers: {
-    setData: (state, action) => {
+    setData: (state, action: PayloadAction<any>) => {
       state.data = action.payload;
     },
-    setSearchTerm: (state, action) => {
+    setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
-    setSortBy: (state, action) => {
+    setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
     },
-    setSortOrder: (state, action) => {
+    setSortOrder: (state, action: PayloadAction<string>) => {
       state.sortOrder = action.payload;
     },
   },

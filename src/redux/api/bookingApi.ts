@@ -3,7 +3,7 @@ import { tagTypes } from "../tag-types"
 import { baseApi } from "./baseApi"
 
 
-export const bookingApi = baseApi.injectEndpoints({
+export const bookingApi:any = baseApi.injectEndpoints({
   endpoints: (build) => ({
     addBooking: build.mutation({
       query: (bookingData:IBookingData) => ({
@@ -22,6 +22,15 @@ export const bookingApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.booking],
     }),
+    singleBooking: build.query({
+      query: (id:string) => {
+        return {
+          url: `/booking/${id}`,
+          method: "GET"
+        };
+      },
+      providesTags: [tagTypes.booking],
+    }),
     deleteBooking: build.mutation({
       query: (bookingId: number) => ({
         url: `/booking/${bookingId}`,
@@ -32,4 +41,4 @@ export const bookingApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useAddBookingMutation , useBookingQuery, useDeleteBookingMutation} = bookingApi
+export const { useAddBookingMutation , useBookingQuery, useDeleteBookingMutation, useSingleBookingQuery} = bookingApi

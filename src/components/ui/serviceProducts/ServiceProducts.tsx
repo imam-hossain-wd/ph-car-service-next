@@ -6,15 +6,20 @@ import Link from "next/link";
 import { useState } from "react";
 import BookingModal from '../BookingModal/BookingModal'
 import ConfirmationModel from "../confirmation-model/ConfirmationModel";
+import { useAppSelector } from "@/redux/hooks";
+
 
 const ServiceProductsPage = ({ service}: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingData , setBookingData]= useState(null);
 
+  // const cart = useAppSelector((state) => state.cart.items);
+  // console.log(cart, 'cartitems....');
+
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [cartData, setCartData]= useState(null)
 
-  // console.log(cartData, 'ccdtaa');
+
   const showcartModel = ()=> {
     setIsCartModalOpen(true)
   }
@@ -35,17 +40,29 @@ const ServiceProductsPage = ({ service}: any) => {
       </p> 
       <p className="my-2 text-md">Descritpion: {service?.description.slice(0,120)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
      <div className="flex justify-center items-center my-3">
-     <Button  onClick={() => {
+     <Button
+     type="primary"  onClick={() => {
     setCartData(service);
     showcartModel();
-  }}  className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button>
+  }}  className="text-[15px] mr-8 w-28 h-8 font-semibold">Add to cart</Button>
+     {/* <Button  onClick={() => {
+    setCartData(service);
+    showcartModel();
+  }}  className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button> */}
 
-      <Button   onClick={() => {
+      <Button type="primary"   onClick={() => {
+    setBookingData(service);
+    showModal();
+  }} className=" text-[15px] w-28 h-8 font-semibold">
+        Booking</Button>
+      {/* <Button   onClick={() => {
     setBookingData(service);
     showModal();
   }} className="bg-gray-700 text-[15px] hover:bg-gray-800 font-semibold  w-28 h-8 text-white border-0 text-bold">
-        Booking</Button>
+        Booking</Button> */}
      </div>
+
+    
 
      <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bookingData={bookingData} />
 

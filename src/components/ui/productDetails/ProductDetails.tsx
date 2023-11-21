@@ -14,10 +14,9 @@ const ProductDetails = (data: any) => {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [cartData, setCartData] = useState(null);
 
-  const { id, name, imageUrl, availability, price, description } = data?.data;
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const {  name, imageUrl, availability, price, description } = data?.data;
+ 
   const dispatch = useAppDispatch();
-
   const HandleAddToCart = (productDetails: any): any => {
     dispatch(addToCart(productDetails));
   };
@@ -28,6 +27,7 @@ const ProductDetails = (data: any) => {
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="w-full mt-4 mb-4">

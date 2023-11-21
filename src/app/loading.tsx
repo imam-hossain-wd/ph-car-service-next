@@ -1,13 +1,7 @@
-import { Space, Spin } from 'antd';
+import Loading from "@/components/view/loading/Loading";
 
-const Loading = () => (
-  <div className="flex justify-center items-center">
-    <Space size="middle">
-    <div className='flex justify-center items-center'>
-    <Spin size="large" />
-    </div>
-  </Space>
-  </div>
-);
+const LoadingPage = () => {
+  return <Loading />
+};
 
-export default Loading;
+export default LoadingPage;

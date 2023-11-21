@@ -3,8 +3,7 @@ import HomeBanner from "@/components/ui/HomeBanner/HomeBanner"
 
 export default async function Home () {
   return (
-    <div className="mt-5 w-[90%] mx-auto">
-     
+    <div>
       <HomePage />
       <HomeBanner /> 
 

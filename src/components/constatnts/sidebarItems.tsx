@@ -34,21 +34,6 @@ export const sidebarItems = (role: string) => {
   const adminSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
-    {
-      label: "Manage Booking",
-      key: "manage-academic",
-      icon: <TableOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}/users`}>Users</Link>,
-          key: `/${role}/academic/faculty`,
-        },
-        {
-          label: <Link href={`/${role}/booking`}>Booking</Link>,
-          key: `/${role}/academic/department`,
-        },
-      ],
-    },
   ];
 
   const superAdminSidebarItems: MenuProps["items"] = [

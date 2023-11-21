@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar/Navbar";
 import { Footer } from "antd/es/layout/layout";
 import Providers from "@/lib/Providers";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,10 +18,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <Providers>
-        <body className={inter.className}>
+        <body  className="mt-5 w-[90%] mx-auto">
           <Navbar />
           {children}
           <Footer />

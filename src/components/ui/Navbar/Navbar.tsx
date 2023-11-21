@@ -18,16 +18,28 @@ import {
 } from "@/services/auth.service";
 import Image from "next/image";
 import { authKey } from "@/constants/storageKey";
-import { useState } from "react";
-import { useGetUserByIdQuery } from "@/redux/api/userApi";
+import { useEffect, useState } from "react";
 
 const { Header } = Layout;
 
 const Navbar = () => {
-  const loggedUser = IsUserLoggedIn();
-  //@ts-ignore
-  const { id } = getUserInfo();
-  const { data } = useGetUserByIdQuery(id);
+  const [loggedUser, setLoggedUser] = useState(false);
+  const [role, setRole] = useState(null);
+
+  const loggedUserInfo = IsUserLoggedIn();
+  const user: any = getUserInfo();
+  useEffect(() => {
+    if (loggedUserInfo) {
+      setLoggedUser(true);
+    }
+    if (user) {
+      setRole(user.role);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loggedUser,role]);
+  // console.log(loggedUser);
+  // console.log(role);
+
   const handleLogOut = () => {
     removeUserInfo(authKey);
   };
@@ -50,7 +62,7 @@ const Navbar = () => {
           {loggedUser ? (
             <div className="flex flex-col">
               <Button type="text">
-                <Link href="/profile"> Profile</Link>
+                <Link href={`${role && role}/profile`}> Profile</Link>
               </Button>
               <Button onClick={handleLogOut} danger type="text">
                 Log out

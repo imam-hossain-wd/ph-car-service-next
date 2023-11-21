@@ -9,13 +9,13 @@ import { IBookingData } from "@/types";
 const App = ({ isModalOpen, setIsModalOpen, bookingData }: any) => {
   const [myDate, setMyDate] = useState(null);
 
-  const user = getUserInfo();
+  const user:any = getUserInfo();
 
   const [addBooking] = useAddBookingMutation();
 
   const BookingData: IBookingData = {
     bookingName: bookingData?.name,
-    //@ts-ignore
+
     userId: user?.id,
     bookingImage: bookingData?.imageUrl,
     serviceId: bookingData?.id,

@@ -1,25 +1,40 @@
-import React from 'react';
-import { Button, message, Popconfirm } from 'antd';
+"use client";
 
-const confirm = (e?: React.MouseEvent<HTMLElement>): void => {
-  message.success('Click on Yes');
+import { Modal, message } from "antd";
+import {  removeFromCart } from "@/redux/slice/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+
+
+const DeleteModal = ({
+  isCartModalOpen,setIsCartModalOpen, cartListData
+}: any) => {
+
+
+  const dispatch = useAppDispatch();
+  
+  const handleOk = () => {
+    message.success("Add To cart Successful");
+   dispatch(removeFromCart(cartListData?.id))
+    setIsCartModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsCartModalOpen(false);
+  };
+
+  return (
+    <Modal
+      width={370}
+      open={isCartModalOpen}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    >
+      <p className="w-48 mx-auto text-md mb-2 font-semibold text-center bg-gray-200">Delete Modal</p>
+     <p>Are you sure to delete <br />
+     {cartListData?.name}
+     </p>
+    </Modal>
+  );
 };
 
-const cancel = (e?: React.MouseEvent<HTMLElement>): void => {
-  message.error('Click on No');
-};
-
-const DeleteModel = ({title,  deleteDelete}:any) => (
-  <Popconfirm
-    title="Delete the task"
-    description="Are you sure to delete this task?"
-    onConfirm={confirm}
-    onCancel={cancel}
-    okText="Yes"
-    cancelText="No"
-  >
-   {deleteDelete && <Button danger>Delete</Button>}
-  </Popconfirm>
-);
-
-export default DeleteModel;
+export default DeleteModal;

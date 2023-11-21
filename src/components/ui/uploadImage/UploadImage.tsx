@@ -26,11 +26,13 @@ const beforeUpload = (file: RcFile) => {
 };
 
 type ImageUploadProps ={
-  name:string
+  name:string;
+  defaultImageUrl?: string;
 }
-const UploadImage = ({name}:ImageUploadProps) => {
+const UploadImage = ({name, defaultImageUrl}:ImageUploadProps) => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>();
+  // const [imageUrl, setImageUrl] = useState<string>();
+  const [imageUrl, setImageUrl] = useState<string | undefined>(defaultImageUrl);
   const {setValue}= useFormContext();
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
@@ -46,7 +48,8 @@ const UploadImage = ({name}:ImageUploadProps) => {
         setImageUrl(url);
       });
     }
-    setImageUrl('');
+    // setImageUrl('');
+    setImageUrl(defaultImageUrl || '');
   };
 
   const uploadButton = (
