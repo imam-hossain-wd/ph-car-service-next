@@ -1,46 +1,54 @@
 "use client";
 
-import { useSingleBookingQuery } from "@/redux/api/bookingApi";
+import { useSingleBookingQuery, useUpdateBookingMutation } from "@/redux/api/bookingApi";
 import Loading from "../loading/Loading";
 import Image from "next/image";
 import Form from "@/components/Forms/Form";
 import { Button, Col, Row } from "antd";
 import FormInput from "@/components/Forms/InputForm";
 import UploadImage from "@/components/ui/uploadImage/UploadImage";
+import { useAppDispatch } from "@/redux/hooks";
 
 const BookingEdit = ({params}:any) => {
     const { data, isLoading } = useSingleBookingQuery(params?.id);
+    const [updateBooking] = useUpdateBookingMutation();
+    const dispatch = useAppDispatch();
 
     if (isLoading) {
       return <Loading />;
     }  
-    const { bookingName, bookingImage,date, service, user } = data;
-    const {
-      contactNo,
-      email,
-      firstName,
-      gender,
-      lastName,
-      password,
-      role,
-      userImage,
-    } = user;
-
+    const {id, bookingName:name, bookingImage,date, service, user } = data;
+    const {contactNo:bookingContactNo,email:bookingEmail,firstName,gender:bookingUserGender,lastName,userImage} = user;
+    
     const onSubmit = (values:any) => {
-        console.log(values);
+        const bookingName = values?.bookingName || name;
+        const price = values?.price || service?.price ;
+        const userName = values?.userName || firstName+" "+lastName ;
+        const email = values?.email || bookingEmail ;
+        const contactNo = values?.contactNo || bookingContactNo ;
+        const gender = values?.gender || bookingUserGender ;
+        const bookingUpdateData = {
+          bookingName,
+          price,
+          userName,
+          email,
+          contactNo,
+          gender
+        }
+        dispatch(updateBooking({id, bookingUpdateData}))
 
-    }
+ }
 
     return (
         <div>
             <Form submitHandler={onSubmit} >
-          <div
-            style={{
-              border: "1px solid #d9d9d9",
-              borderRadius: "5px",
-              padding: "15px",
-              marginBottom: "10px",
-            }}
+          <div className="border border-2 border-gray-300 rounded p-8 mb-4"
+            // style={{
+            //   border: "1px solid #d9d9d9",
+            //   borderRadius: "5px",
+            //   padding: "15px",
+            //   marginBottom: "10px",
+            // }}
           >
             <p
               style={{
@@ -54,15 +62,18 @@ const BookingEdit = ({params}:any) => {
               <Col
                 className="gutter-row"
                 span={8}
+                
                 style={{
                   marginBottom: "10px",
                 }}
               >
                 <FormInput
                   type="text"
-                  name="firstName"
+                  name="bookingName"
                   size="large"
                   label="Booking Name"
+                  defaultValue={name}
+                
                 />
               </Col>
               <Col
@@ -74,9 +85,10 @@ const BookingEdit = ({params}:any) => {
               >
                 <FormInput
                   type="text"
-                  name="middleName"
+                  name="price"
                   size="large"
                   label="Booking Price"
+                  defaultValue={service?.price}
                 />
               </Col>
               <Col
@@ -88,9 +100,10 @@ const BookingEdit = ({params}:any) => {
               >
                 <FormInput
                   type="text"
-                  name="lastName"
+                  name="userName"
                   size="large"
                   label="User Name"
+                  defaultValue={firstName + " " +lastName}
                 />
               </Col>
               <Col
@@ -102,9 +115,10 @@ const BookingEdit = ({params}:any) => {
               >
                 <FormInput
                   type="text"
-                  name="lastName"
+                  name="email"
                   size="large"
                   label="Email"
+                  defaultValue={bookingEmail}
                 />
               </Col>
               <Col
@@ -113,12 +127,13 @@ const BookingEdit = ({params}:any) => {
                 style={{
                   marginBottom: "10px",
                 }}
-              >
+              > 
                 <FormInput
                   type="text"
-                  name="lastName"
+                  name="contactNo"
                   size="large"
                   label="Contact No"
+                  defaultValue={bookingContactNo}
                 />
               </Col>
               <Col
@@ -127,12 +142,13 @@ const BookingEdit = ({params}:any) => {
                 style={{
                   marginBottom: "10px",
                 }}
-              >
+              > 
                 <FormInput
                   type="text"
-                  name="lastName"
+                  name="gender"
                   size="large"
                   label="Gender"
+                  defaultValue={bookingUserGender}
                 />
               </Col>
               <Col

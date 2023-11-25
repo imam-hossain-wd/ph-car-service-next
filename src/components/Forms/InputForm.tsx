@@ -8,6 +8,7 @@ interface IInput {
   type?: string;
   size?: "large" | "small" | "middle";
   value?: string | string[] | undefined;
+  defaultValue?: string | string[] | undefined;
   id?: string;
   placeholder?: string;
   validation?: object;
@@ -20,6 +21,7 @@ const FormInput = ({
   size = "large",
   value,
   id,
+  defaultValue,
   placeholder,
   validation,
   label,
@@ -45,7 +47,7 @@ const FormInput = ({
               className="mt-2"
               placeholder={placeholder}
               {...field}
-              value={value ? value : field.value}
+              defaultValue={defaultValue ? defaultValue : field.value}
             />
           ) : (
             <Input
@@ -54,7 +56,8 @@ const FormInput = ({
               className="mt-2"
               placeholder={placeholder}
               {...field}
-              value={value ? value : field.value}
+              // value={value ? value : field.value}
+              defaultValue={defaultValue ? defaultValue : field.value}
             />
           )
         }

@@ -1,10 +1,8 @@
 "use client";
 
 import UMTable from "@/components/ui/CSTable/CSTable";
-import CartModel from "@/components/ui/confirmation-model/Confirmation-Model";
-import DeleteModal from "@/components/ui/confirmation-model/DeleteModel";
+import DeleteModal from "@/components/ui/deleteModal/DeleteModal";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { removeFromCart } from "@/redux/slice/cartSlice";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import Image from "next/image";
@@ -12,16 +10,15 @@ import Link from "next/link";
 import { useState } from "react";
 
 const AddToCart = () => {
+  const [deleteData, setDeleteData] = useState(null);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
-  const [cartListData, setCartListData] = useState(null);
-  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-
-  const dispatch:any = useAppDispatch();
+  const dispatch: any = useAppDispatch();
   const data = useAppSelector((state) => state.cart.items);
   // console.log(data, 'ppp');
 
   const showModal = () => {
-    setIsCartModalOpen(true);
+    setDeleteModalOpen(true);
   };
 
   const columns = [
@@ -73,7 +70,7 @@ const AddToCart = () => {
 
             <Button
               onClick={() => {
-                setCartListData(data);
+                setDeleteData(data);
                 showModal();
               }}
               type="primary"
@@ -96,9 +93,11 @@ const AddToCart = () => {
           showPagination={true}
         />
       </div>
-      <DeleteModal  isCartModalOpen={isCartModalOpen}
-        setIsCartModalOpen={setIsCartModalOpen}
-        cartListData={cartListData} />
+      <DeleteModal
+        isDeleteModalOpen={isDeleteModalOpen}
+        setDeleteModalOpen={setDeleteModalOpen}
+        deleteData={deleteData}
+      />
     </div>
   );
 };

@@ -38,7 +38,15 @@ export const bookingApi:any = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.booking],
     }),
+    updateBooking: build.mutation({
+      query: ({ id, data }: { id: string, data: any}) => ({
+        url: `/booking/${id}`,
+        method: "PUT", 
+        data,
+      }),
+      invalidatesTags: [tagTypes.booking],
+    }),
   }),
 })
 
-export const { useAddBookingMutation , useBookingQuery, useDeleteBookingMutation, useSingleBookingQuery} = bookingApi
+export const { useAddBookingMutation , useBookingQuery, useDeleteBookingMutation, useSingleBookingQuery,useUpdateBookingMutation} = bookingApi

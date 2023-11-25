@@ -1,7 +1,7 @@
-import BookingPage from "@/components/view/user/Booking";
+import BookingTable from "@/components/view/user/Booking";
 
-const page = () => {
-  return <BookingPage />
+const BookingPage = () => {
+  return <BookingTable />
 };
 
-export default page;
+export default BookingPage;

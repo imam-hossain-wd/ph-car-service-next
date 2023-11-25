@@ -11,45 +11,31 @@ import {
 import { useState } from "react";
 import dayjs from "dayjs";
 import BreadCrumb from "@/components/ui/BreadCrumb/BreadCrumb";
-import ActionBar from "@/components/ui/actionBar/ActionBar";
 import UMTable from "@/components/ui/CSTable/CSTable";
-import { useBookingQuery, useDeleteBookingMutation } from "@/redux/api/bookingApi";
+import {
+  useBookingQuery,
+  useDeleteBookingMutation,
+} from "@/redux/api/bookingApi";
 import { useDispatch } from "react-redux";
 import Loading from "@/app/loading";
 import Image from "next/image";
+import DeleteModal from "@/components/ui/deleteModal/DeleteModal";
 
-const BookingPage = () => {
+const BookingTable = () => {
+  const [deleteData, setDeleteData] = useState(null);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
-  const dispatch = useDispatch()
-
-  const query: Record<string, any> = {};
-  
-  const [page, setPage] = useState<number>(1);
-  const [size, setSize] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>("");
-  const [sortOrder, setSortOrder] = useState<string>("");
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  
-  query["limit"] = size;
-  query["page"] = page;
-  query["sortBy"] = sortBy;
-  query["sortOrder"] = sortOrder;
-  const {data, isLoading}= useBookingQuery({ ...query });
-  const [deleteBooking]= useDeleteBookingMutation();
-
- 
-if(isLoading){
-  return <Loading />
-}
-  const handleDelete = (bookingData: number) => {
-    //@ts-ignore
-    const { id, bookingName } = bookingData;
-    deleteBooking(id);
-    message.success(`${bookingName} Delete Successful`)
+  const showModal = () => {
+    setDeleteModalOpen(true);
   };
 
-  const columns = [
+  const { data, isLoading } = useBookingQuery(undefined);
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const columns = [
     {
       title: "Booking Image",
       dataIndex: "bookingImage",
@@ -67,20 +53,20 @@ if(isLoading){
       title: "Booking Name",
       dataIndex: "bookingName",
     },
-   {
-    title: "Contact No",
-    dataIndex: "user",
-    render: function (user: any) {
-      return user && user.contactNo;
+    {
+      title: "Contact No",
+      dataIndex: "user",
+      render: function (user: any) {
+        return user && user.contactNo;
+      },
     },
-  },
-   {
-    title: "Email",
-    dataIndex: "user",
-    render: function (user: any) {
-      return user && user.email;
+    {
+      title: "Email",
+      dataIndex: "user",
+      render: function (user: any) {
+        return user && user.email;
+      },
     },
-  },
     {
       title: "Date",
       dataIndex: "date",
@@ -106,8 +92,15 @@ if(isLoading){
                 <EditOutlined />
               </Button>
             </Link>
-            
-            <Button onClick={() =>handleDelete(record) } type="primary" danger>
+
+            <Button
+              onClick={() => {
+                setDeleteData(record);
+                showModal();
+              }}
+              type="primary"
+              danger
+            >
               <DeleteOutlined />
             </Button>
           </>
@@ -115,22 +108,7 @@ if(isLoading){
       },
     },
   ];
-  const onPaginationChange = (page: number, pageSize: number) => {
-    console.log("Page:", page, "PageSize:", pageSize);
-    setPage(page);
-    setSize(pageSize);
-  };
-  const onTableChange = (pagination: any, filter: any, sorter: any) => {
-    const { order, field } = sorter;
-    setSortBy(field as string);
-    setSortOrder(order === "ascend" ? "asc" : "desc");
-  };
 
-  const resetFilters = () => {
-    setSortBy("");
-    setSortOrder("");
-    setSearchTerm("");
-  };
   return (
     <div>
       <BreadCrumb
@@ -141,20 +119,22 @@ if(isLoading){
           },
         ]}
       />
-    
-<br/>
+
+      <br />
       <UMTable
         loading={isLoading}
         columns={columns}
         dataSource={data}
-        pageSize={size}
-        showSizeChanger={true}
-        onPaginationChange={onPaginationChange}
-        onTableChange={onTableChange}
         showPagination={true}
+      />
+
+      <DeleteModal
+        isDeleteModalOpen={isDeleteModalOpen}
+        setDeleteModalOpen={setDeleteModalOpen}
+        deleteData={deleteData}
       />
     </div>
   );
 };
 
-export default BookingPage;
+export default BookingTable;
