@@ -1,4 +1,3 @@
-// import { FaLongArrowAltUp, FaPhone, FaRegArrowAltCircleUp, FaWhatsapp } from 'react-icons/fa';
 "use client"
 import Link from 'next/link'
 import Image from 'next/image';
@@ -11,7 +10,7 @@ const HomeBanner = () => {
     return (
         <div id="home" className='flex w-full flex-col-reverse lg:flex-row justify-around items-center my-10'>
             <div className='w-full lg:w-[38%]'>
-                <h1 className='text-3xl text-center lg:text-4xl  -mt-5 font-bold'>Your On-Demand Car Savior <br/> <span className=' text-[#0F1225]'> Anywhere, Anytime!</span></h1>
+                <h3 className='text-xl text-center bg-gray-200 p-5 lg:text-3xl  -mt-5 font-bold'>Your On-Demand Car Savior <br/> <span className=' text-red-500'> Anywhere, Anytime!</span></h3>
                 <p className='text-lg mt-4 text-center bg-gray-300 font-semi-bold font-semibold'>Quality car maintenance and repairs</p>
 
                 <div className='flex flex-col lg:flex-row items-center justify-center mt-5 '>
