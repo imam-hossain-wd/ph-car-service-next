@@ -2,11 +2,7 @@ import Image from "next/image";
 
 const AboutPage = () => {
     return (
-        <div id="about" className='container mx-auto my-10'>
-            
-        <div className='flex justify-center'>
-        <h1 className='text-center w-60 p-1 bg-gray-200 font-bold text-xl mb-5'>About us</h1>
-        </div>
+        <div className='container mx-auto my-10'>
          <div className='flex flex-col items-center  lg:flex-row justify-between'>
               <div className='relative text-white drop-shadow-2xl bg-white p-2 rounded z-9'>
                   <h1 className='absolute font-bold top-0 right-3'><span className='text-6xl'>10</span> <span className='text-3xl'>Years <br/> Experience</span> </h1>

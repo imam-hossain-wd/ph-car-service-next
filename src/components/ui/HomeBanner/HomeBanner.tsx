@@ -5,7 +5,6 @@ import { WhatsAppOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import HomeCarousel from "../carousel/Carousel";
 const HomeBanner = () => {
-
   const contentStyle: React.CSSProperties = {
     height: "400px",
     color: "#fff",
@@ -21,7 +20,7 @@ const HomeBanner = () => {
       className="flex w-full flex-col-reverse lg:flex-row justify-around items-center my-10"
     >
       <div className="w-full lg:w-[38%]">
-        <h3 className="text-xl text-center bg-gray-200 p-5 lg:text-3xl  -mt-5 font-bold">
+        <h3 className="text-xl text-center bg-gray-200 p-5 lg:text-3xl  lg:-mt-10 font-bold">
           Your On-Demand Car Savior <br />{" "}
           <span className=" text-red-500"> Anywhere, Anytime!</span>
         </h3>
@@ -57,10 +56,8 @@ const HomeBanner = () => {
         </div>
       </div>
       <div>
-                {/* <Image className='w-[100%] h-72 lg:h-96 mb-10 lg:mb-0' src="https://i.ibb.co/nDc28mg/banner.png" width={500} height={500} alt="Car Repair and servicing"/> */}
-                <HomeCarousel />
-            </div>
-
+        <HomeCarousel />
+      </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const contentStyle: React.CSSProperties = {
 };
 
 const HomeCarousel = () => (
-  <div className='w-[650px]'>
+  <div className='w-screen  lg:w-[650px] mb-5 lg:mb-0'>
     <Carousel autoplay>
     <div>
       <h3 style={contentStyle}>
