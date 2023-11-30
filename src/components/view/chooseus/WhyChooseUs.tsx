@@ -1,18 +1,18 @@
-import Image from "next/image";
+import AboutPage from "../about/About";
 
 const WhyChooseUs = () => {
   return (
     <div>
-
-
-     <div>
-        <Image className="border-2 border-red-500 rounded-md" src="https://i.ibb.co/8zSYkjM/who-we-are.png" width={180} height={150} alt="service"/>
-        <Image src="https://i.ibb.co/b1BydHY/provide.png" width={180} height={150} alt="service"/>
-        <Image src="https://i.ibb.co/mcf7X9p/our-history.png" width={180} height={150} alt="service"/>
-        <Image src="https://i.ibb.co/f2cRyF6/save-money.png" width={180} height={150} alt="service"/>
-        <Image src="https://i.ibb.co/SKLTxjj/best-services.png" width={180} height={150} alt="service"/>
-        <Image src="https://i.ibb.co/5Gxtz1w/our-store.png" width={180} height={150} alt="service"/>
-     </div>
+      <div className="text-center my-5">
+        <h3 className="uppercase text-xl mb-3 bg-gray-200 w-96 p-2 rounded mx-auto">
+          Why choose us
+        </h3>
+        <p className="w-[51%] font-semibold text-lg font-medium mx-auto">
+          We Provide One of the best premium Quality service. Our expertise
+          technician can easily fix all kind of problems
+        </p>
+      </div>
+      <AboutPage />
     </div>
   );
 };

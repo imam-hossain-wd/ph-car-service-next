@@ -12,6 +12,7 @@ const AdminProfile = () => {
   if (isLoading) {
     return <Loading />;
   }
+  console.log(data, 'admin datas..');
 
   const {
     bloodGroup,

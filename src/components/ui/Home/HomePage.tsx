@@ -22,7 +22,7 @@ const HomePage = () => {
         {
       serviceDatas?.length < 1 && <p className="text-3xl font-semibold text-center text-red-400">No Data Found In Search Result</p>
      }
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-[94%] mx-auto">
           {serviceDatas &&
             serviceDatas.slice(0,6).map((service: any) => (
               <ServiceProductsPage
@@ -36,7 +36,7 @@ const HomePage = () => {
           href="/service"
         >
           {" "}
-          <Button className="bg-primary w-36 h-9" type="primary">
+          <Button className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-40 font-semibold transition ease-in-out delay-150  duration-500 mr-8" >
             Show All Service{" "}
           </Button>
         </Link>

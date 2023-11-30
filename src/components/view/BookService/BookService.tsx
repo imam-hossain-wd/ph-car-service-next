@@ -1,5 +1,12 @@
-"use client"
+"use client";
 
+import Form from "@/components/Forms/Form";
+import FormDatePicker from "@/components/Forms/FormDatePicker";
+import FormSelectField from "@/components/Forms/FormSelectField";
+import FormTextArea from "@/components/Forms/FormTextArea";
+import FormInput from "@/components/Forms/InputForm";
+import { genderOptions, selectServiceOptions, vehicleModelOptions } from "@/components/constatnts/global";
+import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 
@@ -11,7 +18,7 @@ const BookService = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data:any) => {
+  const onSubmit = (data: any) => {
     const name = data.name;
     const email = data.email;
     const phone = data.phone;
@@ -53,6 +60,7 @@ const BookService = () => {
 
     reset();
   };
+
   return (
     <div id="booking" className="my-10">
       <style jsx>
@@ -65,7 +73,9 @@ const BookService = () => {
         `}
       </style>
 
-      <h4 className="bg-gray-200 text-xl font-semibold my-5 w-80 rounded p-2 mx-auto">We Provide Best service</h4>
+      <h4 className="bg-gray-200 text-xl font-semibold my-5 w-80 rounded p-2 mx-auto">
+        We Provide Best service
+      </h4>
 
       <div className="flex flex-col lg:flex-row justify-around items-center">
         <div className="bg-white p-5 drop-shadow-2xl">
@@ -74,110 +84,90 @@ const BookService = () => {
               Get A <span className="text-red-700  ">Service Now!</span>
             </h3>
           </div>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full lg:w-[450px] whiteInput"
-          >
-            <input
-              type="text"
-              {...register("name", { required: "Name is required" })}
-              className="border w-full border-gray-400 focus:outline-none p-2 mt-3"
-              placeholder="Enter Name"
-            />
-            <input
-              type="email"
-              {...register("email", { required: "Email is required" })}
-              className="border w-full border-gray-400 focus:outline-none mt-3 p-2"
-              placeholder="Email"
-            />
-            <input
-              type="tel"
-              {...register("phone", { required: "Phone is required" })}
-              className="border border-gray-400 focus:outline-none w-full mt-3 p-2"
-              placeholder="Phone"
-            />
-            <input
-              type="text"
-              {...register("address", { required: "Address is required" })}
-              className="border border-gray-400 focus:outline-none w-full mt-3 p-2"
-              placeholder="Address"
-            />
-            <br />
+          <Form submitHandler={onSubmit}>
+            <div
+              style={{
+                border: "1px solid #d9d9d9",
+                borderRadius: "5px",
+                padding: "15px",
+                marginBottom: "10px",
+              }}
+            >
+              <div className="">
+               <div className="mb-1">
+               <FormInput
+                  type="text"
+                  name="firstName"
+                  size="large"
+                  placeholder="Full Name"
+                />
+               </div>
+               <div className="mb-1" >
+               <FormInput
+                  type="text"
+                  name="email"
+                  size="large"
+                  placeholder="Email"
+                />
+               </div>
+               <div className="mb-1" >
+               <FormInput
+                  type="text"
+                  name="phone"
+                  size="large"
+                  placeholder="Phone"
+                />
+               </div>
 
-            <div className="flex flex-col md:flex-row lg:flex-row justify-between">
-              <div className="w-full md:w-[48%] lg:w-[218px]">
-                <select
-                  {...register("brand", { required: "Brand is required" })}
-                  className="select border w-full  border-gray-400 focus:outline-none p-2 mr-4 mt-3"
-                >
-                  <option
-                    defaultValue=" Select Your vehicle model"
-                    disabled
-                    selected
-                  >
-                    Select Your vehicle model
-                  </option>
-                  <option>Toyota</option>
-                  <option>Jeep</option>
-                  <option>Audi</option>
-                  <option>Truck</option>
-                  <option>Land Rover</option>
-                  <option>Land Lexus</option>
-                  <option>Mazda</option>
-                </select>
-              </div>
+               <div className="mb-1" >
+               <FormInput
+                  type="text"
+                  name="address"
+                  size="large"
+                  placeholder="Address"
+                />
+               </div>
+                
+              
+               
+               <div className="flex justify-between -mb-1">
+               <div className="w-full lg:w-48 mr-4">
+               <FormSelectField
+                  size="large"
+                  name="vehicleModel"
+                  options={vehicleModelOptions}
+                  placeholder="Select your vehicle model"
+                />
+               </div>
+                <div className="w-full lg:w-48">
+                <FormSelectField
+                  size="large"
+                  name="serviceName"
+                  options={selectServiceOptions}
+                  placeholder="Select your Service"
+                />
+                </div>
+               </div>
 
-              <div className="w-full md:w-[48%] lg:w-[218px]">
-                <select
-                  {...register("service_name", {
-                    required: "Service Name is required",
-                  })}
-                  className="select border w-full  border-gray-400 focus:outline-none p-2 mr-4 mt-3"
-                >
-                  <option
-                    defaultValue=" Select Your vehicle model"
-                    disabled
-                    selected
-                  >
-                    Select Your Service
-                  </option>
-                  <option>Bettery</option>
-                  <option>washing</option>
-                  <option>Oil Change</option>
-                  <option>Body Repair</option>
-                  <option>Engine Repair</option>
-                  <option>Color Repair</option>
-                  <option>Service</option>
-                </select>
-                <br />
+                <div className="mb-3">
+                <FormDatePicker
+                  name="dateOfBirth"
+                  size="large"
+                />
+                </div>
+                 <FormTextArea
+                    name="presentAddress"
+                    placeholder="Describe Service"
+                    rows={4}
+                  />
               </div>
             </div>
-            <input
-              {...register("reservation_date", {
-                required: "Reservation Date is required",
-              })}
-              type="date"
-              className="border w-full border-gray-400 focus:outline-none mt-3 p-2"
-              placeholder="Reservation Date"
-            />
-
-            <textarea
-              {...register("service_description", {
-                required: "Service Description is required",
-              })}
-              className="textarea textarea-bordered border border-gray-400 focus:outline-none w-full h-24 mt-3"
-              placeholder="Describe service"
-            ></textarea>
-
             <div className="flex justify-center">
-              <button
-                type="submit"
-                className="bg-neavyBlue py-2 rounded font-semibold text-white hover:bg-neavyBlueHover px-10 transition duration-500 w-48 mt-2 "
-              >
-                Submit
-              </button>
+            <Button htmlType="submit" className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-36 mx-auto font-semibold transition ease-in-out delay-150 duration-500">
+              Book Now
+            </Button>
             </div>
-          </form>
+          </Form>
         </div>
         <div className=" mt-8 lg:mt-0 drop-shadow-2xl bg-white p-5 rounded">
           <Image

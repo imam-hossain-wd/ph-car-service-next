@@ -3,10 +3,7 @@
 import Form from "@/components/Forms/Form";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import FormInput from "@/components/Forms/InputForm";
-import {
-  sortOptions,
-  orderOptions,
-} from "@/components/constatnts/global";
+import { sortOptions, orderOptions } from "@/components/constatnts/global";
 import Loading from "@/components/view/loading/Loading";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
@@ -15,10 +12,11 @@ import {
   setSortBy,
   setSortOrder,
 } from "@/redux/slice/serviceSlice";
-import { Button } from "antd";
+import { ReloadOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Select } from "antd";
+import Search from "antd/es/input/Search";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-
 
 type Inputs = {
   search: string;
@@ -27,21 +25,23 @@ type Inputs = {
 };
 
 const SearchFiltering = () => {
-  const dispatch:any = useAppDispatch();
+  const dispatch: any = useAppDispatch();
 
-//@ts-ignore
+  //@ts-ignore
 
-  const {isLoading,searchTerm, sortBy, sortOrder } = useAppSelector((state) => state.service);
-  
+  const { isLoading, searchTerm, sortBy, sortOrder } = useAppSelector(
+    (state) => state.service
+  );
+
   const serviceSortBy = sortBy || "name";
   const ServiceSortOrder = sortOrder || "asc";
 
   const fetchData = async () => {
     try {
       let url;
-       url =  `https://car-service-auth.vercel.app/api/v1/service/?searchTerm=${searchTerm}&sortBy=${serviceSortBy}&sortOrder=${ServiceSortOrder}`;
+      url = `https://car-service-auth.vercel.app/api/v1/service/?searchTerm=${searchTerm}&sortBy=${serviceSortBy}&sortOrder=${ServiceSortOrder}`;
       const res = await fetch(url, {
-        cache: 'force-cache',
+        cache: "force-cache",
         next: {
           revalidate: 5,
         },
@@ -49,7 +49,7 @@ const SearchFiltering = () => {
       const data = await res.json();
       dispatch(setData(data?.data?.data));
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -58,71 +58,73 @@ const SearchFiltering = () => {
     fetchData();
   };
 
-  const onFilterSubmit: SubmitHandler<Inputs> = (data) => {
-    
-    dispatch(setSortBy(data.sortBy as string));
-    dispatch(setSortOrder(data.sortOrder as string));
-    fetchData();
-  };
-
   const handleClearFilters = () => {
-    dispatch(setSearchTerm(''));
+    dispatch(setSearchTerm(""));
+    console.log("clicked..");
     fetchData();
   };
 
   useEffect(() => {
     fetchData();
-  }, [ searchTerm, serviceSortBy, ServiceSortOrder]);
+  }, [searchTerm, serviceSortBy, ServiceSortOrder]);
 
-  if(isLoading){
-    return <Loading />
+  if (isLoading) {
+    return <Loading />;
   }
+  const handleChange = (value: string) => {
+    dispatch(setSortBy(value));
+  };
+  const handleOrderChange = (value: string) => {
+    dispatch(setSortOrder(value));
+  };
   return (
-    <div className="flex justify-around rounded items-center -mt-7">
-      <Form submitHandler={onFilterSubmit}>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <p className="mt-6 mr-3">SortBy : </p>
-            <div className=" h-5 w-36 mr-5">
-              <FormSelectField
-                size="middle"
-                name="sortBy"
-                options={sortOptions}
-                placeholder="Select"
-              />
-            </div>
-          </div>
-
-          <div className=" h-5 flex">
-            <p className="mr-5 mt-3">SortOrder : </p>
-            <div className="w-28">
-              <FormSelectField
-                size="middle"
-                name="sortOrder"
-                options={orderOptions}
-                placeholder="Select"
-              />
-            </div>
-          </div>
-          <Button className="mt-7 ml-5" type="primary" htmlType="submit">
-           Apply Filtering
-          </Button>
-          <Button onClick={handleClearFilters} className="mt-7 ml-5" type="primary" htmlType="submit">
-            Clear Filtering
-          </Button>
+    <div className="flex flex-col lg:flex-row rounded justify-around items-center bg-gray-200 p-5 w-full lg:w-[80%] mx-auto rounded ">
+      <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
+          <p className=" mr-3">SortBy : </p>
+            <Select
+              defaultValue="name"
+              style={{ width: 100 }}
+              onChange={handleChange}
+              options={sortOptions}
+            />
         </div>
-      </Form>
-      <Form submitHandler={onSubmit}>
-        <div className="flex items-center mt-6">
-          <div>
-            <FormInput name="search" type="text" size="middle"  />
-          </div>
 
-          <Button className=" mt-2 ml-3" type="primary" htmlType="submit">
+        <div className="flex justify-center items-center">
+          <p className="mr-5 ml-5">SortOrder : </p>
+            <Select
+              defaultValue="asc"
+              style={{ width: 120 }}
+              onChange={handleOrderChange}
+              options={orderOptions}
+            />
+        </div>
+      </div>
+      <div className="flex justify-evenly items-center">
+      <Form submitHandler={onSubmit}>
+        <div className="flex items-center">
+          <div>
+            <FormInput name="search" type="text" size="middle" />
+          </div>
+          <Button
+            className=" mt-2 ml-3 bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150 duration-500 mr-8"
+            htmlType="submit"
+          >
+            <SearchOutlined />
             Search
           </Button>
         </div>
       </Form>
+      
+      <Button
+        onClick={handleClearFilters}
+        className=" mt-2 -ml-5 border-0 h-9 text-[16px] font-bold bg-[#0C1A2D] text-white  w-18 font-semibold transition ease-in-out delay-150  duration-500 mr-8"
+        htmlType="submit"
+      >
+        <ReloadOutlined />
+        Clear
+      </Button>
+      </div>
     </div>
   );
 };

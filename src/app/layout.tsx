@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body  className="mt-5 w-[90%] mx-auto">
+        <body className="mt-20">
           <Navbar />
           {children}
           <Footer />

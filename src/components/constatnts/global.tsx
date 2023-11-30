@@ -49,6 +49,64 @@ export const departmentOptions = [
     },
 ]
 
+export const vehicleModelOptions = [
+    {
+        label: 'Toyota',
+        value: 'Toyota'
+    },
+    {
+        label: 'Jeep',
+        value: 'Jeep'
+    },
+    {
+        label: 'Audi',
+        value: 'Audi'
+    },
+    {
+        label: 'Truck',
+        value: 'Truck'
+    },
+    {
+        label: 'Land Rover',
+        value: 'Land Rover'
+    },
+    {
+        label: 'Land Lexus',
+        value: 'Land Lexus'
+    },
+    {
+        label: 'Others',
+        value: 'Others'
+    },
+]
+
+export const selectServiceOptions = [
+    {
+        label:'Bettery',
+        value:'Battery'
+    },
+    {
+        label:'Washing',
+        value:'Washing'
+    },
+    {
+        label:'Oil Change',
+        value:'Oil Change'
+    },
+    {
+        label:'Body Repair',
+        value:'Body Repair'
+    },
+    {
+        label:'Engine Repair',
+        value:'Engine Repair'
+    },
+    {
+        label:'Color Repair',
+        value:'Color Repair'
+    },
+]
+
 
 export const bloodGroupOptions = [
 	{

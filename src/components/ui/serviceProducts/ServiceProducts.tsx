@@ -16,9 +16,9 @@ const ServiceProductsPage = ({ service}: any) => {
   // const cart = useAppSelector((state) => state.cart.items);
   // console.log(cart, 'cartitems....');
 
+
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [cartData, setCartData]= useState(null)
-
 
   const showcartModel = ()=> {
     setIsCartModalOpen(true)
@@ -27,7 +27,7 @@ const ServiceProductsPage = ({ service}: any) => {
     setIsModalOpen(true);
   };
   return (
-    <div className="shadow-2xl mx-auto p-5 w-[350px] rounded-lg" >
+    <div className="bg-white drop-shadow-2xl mx-auto p-5 w-[350px] rounded-lg" >
       <Link href={`/service/${service?.id}`} className=" no-underline">
         <div className="flex justify-center">
         <Image className="rounded" src={service?.imageUrl} alt="product" width={300} height={200} />
@@ -41,25 +41,17 @@ const ServiceProductsPage = ({ service}: any) => {
       <p className="my-2 text-md">Descritpion: {service?.description.slice(0,120)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
      <div className="flex justify-center items-center my-3">
      <Button
-     type="primary"  onClick={() => {
+      onClick={() => {
     setCartData(service);
     showcartModel();
-  }}  className="text-[15px] mr-8 w-28 h-8 font-semibold">Add to cart</Button>
-     {/* <Button  onClick={() => {
-    setCartData(service);
-    showcartModel();
-  }}  className=" bg-gray-700 hover:bg-gray-800 font-semibold w-28 h-8 text-white border-0 text-bold mr-10 text-[15px]">Add to cart</Button> */}
+  }}  className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150  hover:scale-110 duration-500 mr-8">Add to cart</Button>
 
-      <Button type="primary"   onClick={() => {
+      <Button   onClick={() => {
     setBookingData(service);
     showModal();
-  }} className=" text-[15px] w-28 h-8 font-semibold">
+
+  }} className=" bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150  hover:scale-110 duration-500">
         Booking</Button>
-      {/* <Button   onClick={() => {
-    setBookingData(service);
-    showModal();
-  }} className="bg-gray-700 text-[15px] hover:bg-gray-800 font-semibold  w-28 h-8 text-white border-0 text-bold">
-        Booking</Button> */}
      </div>
 
     

@@ -1,26 +1,16 @@
 "use client";
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  Layout,
-  Menu,
-  MenuProps,
-  Space,
-  Drawer,
-} from "antd";
+
 import Link from "next/link";
-import { MenuOutlined, UserOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { Avatar, Button, Drawer, Dropdown, MenuProps, Space } from "antd";
 import {
   IsUserLoggedIn,
   getUserInfo,
   removeUserInfo,
 } from "@/services/auth.service";
-import Image from "next/image";
 import { authKey } from "@/constants/storageKey";
-import { useEffect, useState } from "react";
-
-const { Header } = Layout;
+import { CloseOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const [loggedUser, setLoggedUser] = useState(false);
@@ -28,6 +18,7 @@ const Navbar = () => {
 
   const loggedUserInfo = IsUserLoggedIn();
   const user: any = getUserInfo();
+  console.log(user?.role, "user role..");
   useEffect(() => {
     if (loggedUserInfo) {
       setLoggedUser(true);
@@ -35,8 +26,8 @@ const Navbar = () => {
     if (user) {
       setRole(user.role);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loggedUser,role]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loggedUser, role]);
   // console.log(loggedUser);
   // console.log(role);
 
@@ -62,7 +53,7 @@ const Navbar = () => {
           {loggedUser ? (
             <div className="flex flex-col">
               <Button type="text">
-                <Link href={`${role && role}/profile`}> Profile</Link>
+                <Link href={`/${role && role}/profile`}> Profile</Link>
               </Button>
               <Button onClick={handleLogOut} danger type="text">
                 Log out
@@ -78,88 +69,92 @@ const Navbar = () => {
     },
   ];
 
+  const navMenuItems = (
+    <li className="list-none flex flex-col justify-center items-center lg:flex-row">
+      <Link
+        className="text-black text-[17px] mt-2 lg:mt-0 lg:mr-3   no-underline "
+        href="/"
+      >
+        Home
+      </Link>
+      <Link
+        className="text-black text-[17px] mt-2 lg:mt-0 lg:mr-3 no-underline "
+        href="/service"
+      >
+        Service
+      </Link>
+      <Link
+        className="text-black text-[17px] no-underline  mt-2 lg:mt-0 lg:mr-3    "
+        href="/contact"
+      >
+        Contact{" "}
+      </Link>
+      <Link
+        className="text-black text-[17px] no-underline mt-2 lg:mt-0 lg:mr-3"
+        href="/about"
+      >
+        About
+      </Link>
+      <Link
+        className="text-black text-[17px] no-underline mt-2 lg:mt-0 lg:mr-3  "
+        href="/booking"
+      >
+        Booking
+      </Link>
+    </li>
+  );
+
   return (
-    <Layout className="layout ">
-      <Header className="flex justify-between items-center bg-white text-black">
-        <div className="-ml-16 lg:-ml-10">
-          <Link className="flex justify-center items-center" href="/">
+    <section className="relative z-50 mb-32">
+      <header className="fixed top-0 left-0 right-0  bg-white shadow-md mb-2">
+        <nav className="flex justify-between p-4 w-[90%] mx-auto">
+          <div className="flex items-center">
+            <Button className="lg:hidden mr-3 -ml-4 " onClick={showDrawer}>
+              <MenuOutlined />
+            </Button>
             <Image
-              className="w-12 h-12 ml-16 "
-              src="https://i.ibb.co/HxLD1kn/cardev-logo.jpg"
-              width={100}
-              height={100}
-              alt="Picture of the author"
+              className="w-10 h-10 rounded-full"
+              src="https://i.ibb.co/863c3CY/car-service-logo.jpg'"
+              width={500}
+              height={500}
+              alt="car service logo"
             />
-            <h1 className="text-black flex  ml-3">
-              Car <span className="text-red-500">Dev</span>
-            </h1>
-          </Link>
-        </div>
-        <div className="-ml-[99999px] lg:ml-0 ">
-          <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Link href="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link href="/service">Services</Link>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Link href="/about">About</Link>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Link href="/contact">Contact</Link>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <Dropdown menu={{ items }}>
-                <a>
-                  <Space wrap size={20}>
-                    <Avatar
-                      className="text-[14px]"
-                      size="large"
-                      icon={<UserOutlined />}
-                    />
-                  </Space>
-                </a>
-              </Dropdown>
-            </Menu.Item>
-          </Menu>
-        </div>
-        <Button className="lg:hidden" onClick={showDrawer}>
-          <MenuOutlined />
-        </Button>
-        <Drawer
-          title={
-            <div className="ml-4">
-              <Dropdown menu={{ items }}>
-                <a>
-                  <Space wrap size={16}>
-                    <Avatar size="large" icon={<UserOutlined />} />
-                  </Space>
-                </a>
-              </Dropdown>
-            </div>
-          }
-          placement="right"
-          onClose={onClose}
-          open={open}
-        >
-          <Menu mode="vertical" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Link href="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link href="/service">Services</Link>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Link href="/about">About</Link>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Link href="/contact">Contact</Link>
-            </Menu.Item>
-          </Menu>
-        </Drawer>
-      </Header>
-    </Layout>
+            <h3 className="text-3xl font-bold text-black p-1">
+              Car<span className="text-[#f93e76]">Dev</span>
+            </h3>
+          </div>
+          <div className="flex items-center">
+            <ul className="hidden lg:flex">{navMenuItems}</ul>
+            <Dropdown menu={{ items }}>
+              <a className="">
+                <Space wrap size={24}>
+                  <Avatar
+                    className="text-[20px] ml-2"
+                    size="large"
+                    icon={<UserOutlined />}
+                  />
+                </Space>
+              </a>
+            </Dropdown>
+          </div>
+        </nav>
+        <nav>
+          <Drawer
+            placement="left"
+            title={
+              <CloseOutlined
+                className="ml-72 ml-5 hover:text-red-500 text-lg transition-all delay-300"
+                onClick={() => setOpen(!open)}
+              />
+            }
+            open={open}
+            closable={false}
+          >
+            {navMenuItems}
+          </Drawer>
+        </nav>
+      </header>
+    </section>
   );
 };
 
