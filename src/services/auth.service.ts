@@ -2,6 +2,7 @@
 import { decodedToken } from './../utils/jwt';
 import { authKey } from "@/constants/storageKey";
 import { getFromLocalStorage, setToLocalStorage } from "@/utils/localStorage";
+import { useEffect } from 'react';
 
 export const storeUserInto = ({accessToken}:{accessToken:string})=> {
     setToLocalStorage(authKey, accessToken as string)
@@ -19,10 +20,11 @@ export const getUserInfo = ()=> {
 }
 
 export const IsUserLoggedIn:any = ()=> {
-    const authToken = getFromLocalStorage(authKey);
-    return !!authToken
+      const authToken = getFromLocalStorage(authKey);
+      return !!authToken
 }
 
 export const removeUserInfo = (key: string) => {
   return localStorage.removeItem(key);
 };
+

@@ -6,15 +6,12 @@ import Link from "next/link";
 import { useState } from "react";
 import BookingModal from '../BookingModal/BookingModal'
 import ConfirmationModel from "../confirmation-model/ConfirmationModel";
-import { useAppSelector } from "@/redux/hooks";
+
 
 
 const ServiceProductsPage = ({ service}: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingData , setBookingData]= useState(null);
-
-  // const cart = useAppSelector((state) => state.cart.items);
-  // console.log(cart, 'cartitems....');
 
 
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
@@ -26,6 +23,7 @@ const ServiceProductsPage = ({ service}: any) => {
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   return (
     <div className="bg-white drop-shadow-2xl mx-auto p-5 w-[350px] rounded-lg" >
       <Link href={`/service/${service?.id}`} className=" no-underline">

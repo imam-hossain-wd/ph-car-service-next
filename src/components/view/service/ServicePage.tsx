@@ -18,7 +18,7 @@ const ServicePage = () => {
         </h2>
       </div>
       {serviceDatas?.length < 1 && (
-        <p className="text-3xl font-semibold text-center text-red-400">
+        <p className="text-3xl mb-20 font-semibold text-center text-red-400">
           No Data Found In Search Result
         </p>
       )}

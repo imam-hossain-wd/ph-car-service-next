@@ -78,7 +78,7 @@ const SearchFiltering = () => {
     dispatch(setSortOrder(value));
   };
   return (
-    <div className="flex flex-col lg:flex-row rounded justify-around items-center bg-gray-200 p-5 w-full lg:w-[80%] mx-auto rounded ">
+    <div className="flex flex-col lg:flex-row rounded justify-around items-center bg-gray-200 p-4 w-full lg:w-[75%] mx-auto rounded ">
       <div className="flex justify-between items-center">
         <div className="flex justify-center items-center">
           <p className=" mr-3">SortBy : </p>
@@ -90,7 +90,7 @@ const SearchFiltering = () => {
             />
         </div>
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <p className="mr-5 ml-5">SortOrder : </p>
             <Select
               defaultValue="asc"
@@ -100,14 +100,14 @@ const SearchFiltering = () => {
             />
         </div>
       </div>
-      <div className="flex justify-evenly items-center">
+      <div className="flex justify-evenly items-center ">
       <Form submitHandler={onSubmit}>
-        <div className="flex items-center">
+        <div className="flex items-center -mt-2">
           <div>
             <FormInput name="search" type="text" size="middle" />
           </div>
           <Button
-            className=" mt-2 ml-3 bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150 duration-500 mr-8"
+            className=" mt-2 ml-3 bg-[#0C1A2D] border-0 h-8 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150 duration-500 mr-8"
             htmlType="submit"
           >
             <SearchOutlined />
@@ -118,7 +118,7 @@ const SearchFiltering = () => {
       
       <Button
         onClick={handleClearFilters}
-        className=" mt-2 -ml-5 border-0 h-9 text-[16px] font-bold bg-[#0C1A2D] text-white  w-18 font-semibold transition ease-in-out delay-150  duration-500 mr-8"
+        className=" -ml-5 border-0 h-8 text-[16px] font-bold bg-[#0C1A2D] text-white  w-18 font-semibold transition ease-in-out delay-150  duration-500 mr-8"
         htmlType="submit"
       >
         <ReloadOutlined />

@@ -12,14 +12,19 @@ import {
 import { authKey } from "@/constants/storageKey";
 import { CloseOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 
+
+
+
 const Navbar = () => {
+
   const [loggedUser, setLoggedUser] = useState(false);
   const [role, setRole] = useState(null);
+  
 
-  const loggedUserInfo = IsUserLoggedIn();
-  const user: any = getUserInfo();
-  console.log(user?.role, "user role..");
+  
   useEffect(() => {
+    const loggedUserInfo = IsUserLoggedIn();
+    const user: any = getUserInfo();
     if (loggedUserInfo) {
       setLoggedUser(true);
     }
@@ -69,34 +74,35 @@ const Navbar = () => {
     },
   ];
 
+
   const navMenuItems = (
     <li className="list-none flex flex-col justify-center items-center lg:flex-row">
       <Link
-        className="text-black text-[17px] mt-2 lg:mt-0 lg:mr-3   no-underline "
+        className="text-black  mt-2 lg:mt-0 lg:mr-3 no-underline "
         href="/"
       >
         Home
       </Link>
       <Link
-        className="text-black text-[17px] mt-2 lg:mt-0 lg:mr-3 no-underline "
+        className="text-black  mt-2 lg:mt-0 lg:mr-3 no-underline "
         href="/service"
       >
         Service
       </Link>
       <Link
-        className="text-black text-[17px] no-underline  mt-2 lg:mt-0 lg:mr-3    "
+        className="text-black no-underline  mt-2 lg:mt-0 lg:mr-3    "
         href="/contact"
       >
         Contact{" "}
       </Link>
       <Link
-        className="text-black text-[17px] no-underline mt-2 lg:mt-0 lg:mr-3"
+        className="text-black no-underline mt-2 lg:mt-0 lg:mr-3"
         href="/about"
       >
         About
       </Link>
       <Link
-        className="text-black text-[17px] no-underline mt-2 lg:mt-0 lg:mr-3  "
+        className="text-black no-underline mt-2 lg:mt-0 lg:mr-3  "
         href="/booking"
       >
         Booking
@@ -107,7 +113,7 @@ const Navbar = () => {
   return (
     <section className="relative z-50 mb-32">
       <header className="fixed top-0 left-0 right-0  bg-white shadow-md mb-2">
-        <nav className="flex justify-between p-4 w-[90%] mx-auto">
+        <nav className="flex justify-between p-3 w-[90%] mx-auto">
           <div className="flex items-center">
             <Button className="lg:hidden mr-3 -ml-4 " onClick={showDrawer}>
               <MenuOutlined />

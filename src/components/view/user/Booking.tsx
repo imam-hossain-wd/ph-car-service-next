@@ -31,9 +31,12 @@ const BookingTable = () => {
 
   const { data, isLoading } = useBookingQuery(undefined);
 
+
   if (isLoading) {
     return <Loading />;
   }
+
+  console.log('booking data', data);
 
   const columns = [
     {

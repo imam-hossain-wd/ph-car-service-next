@@ -9,7 +9,7 @@ import { useUserLogInMutation } from "@/redux/api/authApi";
 import { getUserInfo, storeUserInto } from "@/services/auth.service";
 import Link from "next/link";
 import { GithubFilled, GoogleCircleFilled } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+
 
 
 type FormValues = {
@@ -19,33 +19,31 @@ type FormValues = {
 
 const LoginPage = () => {
   const router = useRouter();
-  const [role, setRole]= useState(null)
   const [userLogIn] = useUserLogInMutation();
-
-  
-  useEffect(()=> {
-     const user:any = getUserInfo();
-    if(user && user.role){
-      setRole(user.role)
-    }
-  }, [])
-
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
       const res = await userLogIn({ ...data }).unwrap();
-
-      if (res?.accessToken) {      
+  
+      if (res?.accessToken) {
         message.success("Login Successful");
         storeUserInto({ accessToken: res?.accessToken });
       }
-      role && router.push(`${role}/profile`);
+  
+      const user = getUserInfo();
+      //@ts-expect-error
+      const role:any = user.role;
       
+      if (user && role) {
+        router.push(`/${role}/profile`);
+      } else {
+        console.log("User or role not available for redirection.");
+      }
     } catch (err: any) {
       console.error(err.message);
     }
   };
-
+  
   return (
     <div className="bg-white shadow-2xl border-2 border-gray-200">
       <Row
