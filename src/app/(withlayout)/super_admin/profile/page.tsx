@@ -1,10 +1,7 @@
+import AdminProfile from "@/components/view/super_admin/Profile";
 
 const SuperAdminProfile = () => {
-    return (
-        <div>
-            <h1>Super admin profile</h1>
-        </div>
-    );
+    return <AdminProfile />
 };
 
 export default SuperAdminProfile;

@@ -13,19 +13,18 @@ export const adminApi = baseApi.injectEndpoints({
       invalidatesTags:[tagTypes.admin]
     }),
     admins: build.query({
-      query: (arg: Record<string, any>) => {
+      query: () => {
         return {
           url: "/admin",
           method: "GET",
-          params: arg,
         };
       },
       providesTags: [tagTypes.admin],
     }),
 
     getAdminById: build.query({
-      query: (userId) => ({
-        url: `/admin/${userId}`,
+      query: (adminId) => ({
+        url: `/admin/${adminId}`,
         method: "GET",
       }),
       providesTags: [tagTypes.admin],

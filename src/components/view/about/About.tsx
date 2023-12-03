@@ -6,7 +6,7 @@ const AboutPage = () => {
          <div className='flex flex-col items-center  lg:flex-row justify-between'>
               <div className='relative text-white drop-shadow-2xl bg-white p-2 rounded z-9'>
                   <h1 className='absolute font-bold top-0 right-3'><span className='text-6xl'>10</span> <span className='text-3xl'>Years <br/> Experience</span> </h1>
-                  <Image className='h-[400px] w-[700px]' src="https://i.ibb.co/LPyv1Vd/engine-oil-changing.png" width={500} height={700} alt="car repair and servicing" />
+                  <Image className='h-[400px] w-full lg:w-[700px]' src="https://i.ibb.co/LPyv1Vd/engine-oil-changing.png" width={500} height={700} alt="car repair and servicing" />
               </div>
               <div className='mt-10 lg:mt-0 ml-10'>
                   <h1 className='text-4xl font-bold mb-5'><span className='text-red-700'>CarDev</span> Is The Best Place For <br/> Your Auto Car</h1>

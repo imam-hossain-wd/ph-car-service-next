@@ -111,7 +111,7 @@ const Navbar = () => {
   );
 
   return (
-    <section className="relative z-50 mb-32">
+    <section className="relative z-50 mb-32 w-full">
       <header className="fixed top-0 left-0 right-0  bg-white shadow-md mb-2">
         <nav className="flex justify-between p-3 w-[90%] mx-auto">
           <div className="flex items-center">
@@ -131,11 +131,11 @@ const Navbar = () => {
           </div>
           <div className="flex items-center">
             <ul className="hidden lg:flex">{navMenuItems}</ul>
-            <Dropdown menu={{ items }}>
-              <a className="">
+            <Dropdown menu={{ items }} className="">
+              <a className="-ml-10 lg:ml-2">
                 <Space wrap size={24}>
                   <Avatar
-                    className="text-[20px] ml-2"
+                    className="text-[20px] "
                     size="large"
                     icon={<UserOutlined />}
                   />

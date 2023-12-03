@@ -19,12 +19,12 @@ const HomeBanner = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <HomeCarousel />
         <Button
         onClick={handleScrollToTop}
           type="primary"
-          className="animated  items-center z-10 fixed right-5 bottom-20 transition rounded-full duration-200 text-[18px] flex justify-center items-center animate-bounce w-8 h-8 bg-[#0C1A2D] "
+          className="animated  items-center z-10 fixed right-5 bottom-16 transition rounded-full duration-200 text-[16px] flex justify-center items-center animate-bounce w-8 h-8 bg-[#0C1A2D] "
         >
           <ArrowUpOutlined />
         </Button>
@@ -44,7 +44,7 @@ const HomeBanner = () => {
       <Link href={`https://wa.me/${phoneNumber}`}>
         <Button
           type="primary"
-          className="flex hover:text-white items-center w-36 hover:bg-green-500 z-10 fixed right-5 bottom-5 transition rounded-full duration-200 text-[15px] w-28 h-9 bg-green-500 font-bold"
+          className="flex hover:text-white items-center justify-center w-36 hover:bg-green-600 z-10 fixed right-5 bottom-5 transition rounded-full duration-200 text-[15px] w-28 h-9 bg-green-500 font-bold"
         >
           <span className="text-xl mr-2 ml-2">
             {" "}

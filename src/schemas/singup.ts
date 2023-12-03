@@ -7,5 +7,7 @@ export const userSchema = yup.object().shape({
   contactNo: yup.string().required('Contact No is required'),
   gender: yup.string().required('Gender is required'),
   password: yup.string().required('Password is required'),
-
+  file: yup.mixed().test('file', 'Image is required', (value) => {
+    return !!value; 
+  }),
 });

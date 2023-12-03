@@ -25,7 +25,6 @@ export default function RootLayout({
       <Providers>
         <body className="mt-20">
           <Navbar />
-          <HomeBanner />
           {children}
           <Footer />
         </body>

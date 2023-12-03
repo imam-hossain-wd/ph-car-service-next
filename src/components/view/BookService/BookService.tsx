@@ -1,22 +1,10 @@
 "use client";
 
 import Form from "@/components/Forms/Form";
-import FormDatePicker from "@/components/Forms/FormDatePicker";
-import FormSelectField from "@/components/Forms/FormSelectField";
-import FormTextArea from "@/components/Forms/FormTextArea";
-import FormInput from "@/components/Forms/InputForm";
-import { genderOptions, selectServiceOptions, vehicleModelOptions } from "@/components/constatnts/global";
-import { Button, Col, Row } from "antd";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
+import BookingServiceForm from "./BookingServiceForm";
 
 const BookService = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
 
   const onSubmit = (data: any) => {
     const name = data.name;
@@ -57,12 +45,10 @@ const BookService = () => {
     const url =
       "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
     // window.open(url, "_blank").focus();
-
-    reset();
   };
 
   return (
-    <div id="booking" className="my-10">
+    <div id="booking" className="p-5">
       <style jsx>
         {`
           .whiteInput input,
@@ -73,105 +59,28 @@ const BookService = () => {
         `}
       </style>
 
-      <h4 className="bg-gray-200 text-xl font-semibold my-5 w-80 rounded p-2 mx-auto">
+      <h4 className="bg-gray-200 text-lg text-center font-semibold my-3 w-80 rounded p-2 mx-auto">
         We Provide Best service
       </h4>
+ 
 
-      <div className="flex flex-col lg:flex-row justify-around items-center">
-        <div className="bg-white p-5 drop-shadow-2xl">
+      <div className="flex flex-col lg:flex-row items-center justify-between">
+    
+        <div className="w-full lg:w-[500px] bg-white p-5   drop-shadow-2xl">
           <div>
             <h3 className="text-2xl text-center md:text-center  font-bold -mt-2 mb-2">
               Get A <span className="text-red-700  ">Service Now!</span>
             </h3>
           </div>
+          <div className="w-full">
           <Form submitHandler={onSubmit}>
-            <div
-              style={{
-                border: "1px solid #d9d9d9",
-                borderRadius: "5px",
-                padding: "15px",
-                marginBottom: "10px",
-              }}
-            >
-              <div className="">
-               <div className="mb-1">
-               <FormInput
-                  type="text"
-                  name="firstName"
-                  size="large"
-                  placeholder="Full Name"
-                />
-               </div>
-               <div className="mb-1" >
-               <FormInput
-                  type="text"
-                  name="email"
-                  size="large"
-                  placeholder="Email"
-                />
-               </div>
-               <div className="mb-1" >
-               <FormInput
-                  type="text"
-                  name="phone"
-                  size="large"
-                  placeholder="Phone"
-                />
-               </div>
-
-               <div className="mb-1" >
-               <FormInput
-                  type="text"
-                  name="address"
-                  size="large"
-                  placeholder="Address"
-                />
-               </div>
-                
-              
-               
-               <div className="flex justify-between -mb-1">
-               <div className="w-full lg:w-48 mr-4">
-               <FormSelectField
-                  size="large"
-                  name="vehicleModel"
-                  options={vehicleModelOptions}
-                  placeholder="Select your vehicle model"
-                />
-               </div>
-                <div className="w-full lg:w-48">
-                <FormSelectField
-                  size="large"
-                  name="serviceName"
-                  options={selectServiceOptions}
-                  placeholder="Select your Service"
-                />
-                </div>
-               </div>
-
-                <div className="mb-3">
-                <FormDatePicker
-                  name="dateOfBirth"
-                  size="large"
-                />
-                </div>
-                 <FormTextArea
-                    name="presentAddress"
-                    placeholder="Describe Service"
-                    rows={4}
-                  />
-              </div>
-            </div>
-            <div className="flex justify-center">
-            <Button htmlType="submit" className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-36 mx-auto font-semibold transition ease-in-out delay-150 duration-500">
-              Book Now
-            </Button>
-            </div>
+            <BookingServiceForm />
           </Form>
+          </div>
         </div>
-        <div className=" mt-8 lg:mt-0 drop-shadow-2xl bg-white p-5 rounded">
+        <div className=" mt-8 lg:mt-0 bg-white drop-shadow-2xl  p-3 rounded">
           <Image
-            className="w-[650px] h-[500px]"
+            className="w-full lg:w-[640px] rounded h-[400px] lg:h-[500px]"
             src="https://i.ibb.co/cyxmq4p/brake-disc-1749633-1920.jpg"
             width={500}
             height={500}

@@ -45,7 +45,7 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-            <p className="hover:text-red-500">Al Satwa, Dubai, UAE</p>
+            <p className="hover:text-red-500">Chattogram , Bangladesh</p>
           </div>
 
           <div className="">
@@ -79,12 +79,12 @@ const Footer = () => {
               </h2>
             </div>
             <div>
-              <div className="flex items-center mb-1 text-red-700">
+              <div className="flex items-center mb-1 hover:text-red-500 ">
                 <h4>
                   <PhoneFilled />
                 </h4>
-                <Link href="tel:971568703512" className="ml-2">
-                  +97658249652
+                <Link href="tel:971568703512" className="ml-2 no-underline text-black hover:text-red-500">
+                  +00816524385
                 </Link>
               </div>
               <div className="flex items-center hover:text-red-500">

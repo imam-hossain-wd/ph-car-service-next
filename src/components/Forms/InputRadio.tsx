@@ -1,24 +1,51 @@
-import React, { useState } from 'react';
-import type { RadioChangeEvent } from 'antd';
-import { Radio } from 'antd';
+import { getErrorMessageByPropertyName } from "@/utils/achemaValidator";
+import { Radio } from "antd";
+import { useFormContext, Controller } from "react-hook-form";
+import type { RadioChangeEvent } from "antd";
 
+interface RadioProps {
+  name: string;
+  options: string[];
+  defaultValue?: string;
+  label?: string;
+}
 
-const plainOptions = ['Male', 'Female', 'Other'];
+const FormRadio = ({ name, options, defaultValue, label }: RadioProps) => {
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
 
-const InputRadio = () => {
-  const [value, setValue] = useState('Male');
+  const errorMessage = getErrorMessageByPropertyName(errors, name);
 
-  const onChange1 = ({ target: { value } }: RadioChangeEvent) => {
-    console.log('radio1 checked', value);
-    setValue(value);
+  const onChangeHandler = ({ target: { value } }: RadioChangeEvent) => {
+    // Handle radio value change if needed
   };
-
 
   return (
     <>
-      <Radio.Group options={plainOptions} onChange={onChange1} value={value} />
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => (
+          <Radio.Group
+            options={options}
+            onChange={(e) => {
+              field.onChange(e);
+              onChangeHandler(e);
+            }}
+            value={field.value}
+          />
+        )}
+      />
+      <br />
+      <small className="text-red-600 mt-3">{errorMessage}</small>
     </>
   );
 };
 
-export default InputRadio;
+export default FormRadio;
+
+
+
+
