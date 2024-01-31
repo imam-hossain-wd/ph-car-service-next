@@ -10,10 +10,9 @@ import ConfirmationModel from "../confirmation-model/ConfirmationModel";
 
 
 const ServiceProductsPage = ({ service}: any) => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingData , setBookingData]= useState(null);
-
-
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [cartData, setCartData]= useState(null)
 
@@ -25,34 +24,35 @@ const ServiceProductsPage = ({ service}: any) => {
   };
 
   return (
-    <div className="bg-white drop-shadow-2xl mx-auto p-5 w-[350px] rounded-lg" >
+    <div className="bg-white drop-shadow-xl  rounded-lg" >
       <Link href={`/service/${service?.id}`} className=" no-underline">
-        <div className="flex justify-center">
-        <Image className="rounded" src={service?.imageUrl} alt="product" width={300} height={200} />
+        <div className="flex justify-center p-5">
+        <Image className="rounded w-full" src={service?.imageUrl} alt="product" width={180} height={200} />
         </div>
-        <h4 className=" my-2 font-semibold text-black ">{service?.name}</h4>
       </Link>
-      <p>Rating: {service?.price}</p>
-      <p className="mt-2 text-md">
+
+      <div className="text-[15px] px-5 text-[#282828] ">
+      <h4 className="mb-2 font-semibold text-black ">{service?.name}</h4>
+      <p className="">Rating: {service?.price}</p>
+      <p className="mt-1 ">
         Availability: {service?.availability ? "In stock" : "Out of stock"}
       </p> 
-      <p className="my-2 text-md">Descritpion: {service?.description.slice(0,120)}<Link href={`/service/${service?.id}`}> Read More...</Link></p>
-     <div className="flex justify-center items-center my-3">
+      <p className="mt-[6px] mb-3">Descritpion: {service?.description.slice(0,70)}<Link className="text-[13px]" href={`/service/${service?.id}`}> Read More...</Link></p>
+      </div>
+     <div className="flex px-3 py-2 justify-center items-center mb-2">
      <Button
       onClick={() => {
     setCartData(service);
     showcartModel();
-  }}  className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150  hover:scale-110 duration-500 mr-8">Add to cart</Button>
+  }}  className="bg-[#0C1A2D] flex justify-center items-center border-0 h-7 text-white text-[15px] w-28  transition ease-in-out delay-150  hover:scale-110 duration-500 mr-8">Add to cart</Button>
 
       <Button   onClick={() => {
     setBookingData(service);
     showModal();
 
-  }} className=" bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-28 font-semibold transition ease-in-out delay-150  hover:scale-110 duration-500">
+  }} className=" bg-[#0C1A2D] border-0 h-7 flex justify-center items-center text-white text-[15px] w-28  transition ease-in-out delay-150  hover:scale-110 duration-500">
         Booking</Button>
      </div>
-
-    
 
      <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bookingData={bookingData} />
 

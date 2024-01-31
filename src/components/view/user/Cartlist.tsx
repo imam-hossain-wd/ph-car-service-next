@@ -40,6 +40,10 @@ const AddToCart = () => {
       dataIndex: "name",
     },
     {
+      title: "status",
+      dataIndex: "",
+    },
+    {
       title: "Price",
       dataIndex: "price",
     },

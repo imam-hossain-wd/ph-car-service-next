@@ -155,7 +155,7 @@ const Contact = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-orange-500 border-0 py-3 rounded font-semibold text-white px-10 transition duration-500 w-48 mt-2"
+                className="bg-primary border-0 py-3 rounded font-semibold text-white px-10 transition duration-500 w-48 mt-2"
               >
                 Submit
               </button>

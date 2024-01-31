@@ -2,7 +2,7 @@
 import { decodedToken } from './../utils/jwt';
 import { authKey } from "@/constants/storageKey";
 import { getFromLocalStorage, setToLocalStorage } from "@/utils/localStorage";
-import { useEffect } from 'react';
+
 
 export const storeUserInto = ({accessToken}:{accessToken:string})=> {
     setToLocalStorage(authKey, accessToken as string)

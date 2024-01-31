@@ -7,7 +7,9 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
+
 export const sidebarItems = (role: string) => {
+
   const defaultSidebarItems: MenuProps["items"] = [
     {
       label: <Link href={`/${role}/profile`}>Profile</Link>,

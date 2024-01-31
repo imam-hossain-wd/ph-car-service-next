@@ -64,7 +64,7 @@ const BookService = () => {
       </h4>
  
 
-      <div className="flex flex-col lg:flex-row items-center justify-between">
+      <div className="flex flex-col lg:flex-row items-center justify-around">
     
         <div className="w-full lg:w-[500px] bg-white p-5   drop-shadow-2xl">
           <div>

@@ -22,9 +22,9 @@ const HomePage = () => {
         {
       serviceDatas?.length < 1 && <p className="text-3xl font-semibold text-center text-red-400">No Data Found In Search Result</p>
      }
-        <div className="grid grid-cols-1 place-items-center mt-5 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+        <div className="grid grid-cols-1 place-items-center mt-5 md:grid-cols-2 lg:grid-cols-4 gap-5 w-[95%] mx-auto">
           {serviceDatas &&
-            serviceDatas.slice(0,6).map((service: any) => (
+            serviceDatas.slice(0,8).map((service: any) => (
               <ServiceProductsPage
                 key={service.id}
                 service={service}

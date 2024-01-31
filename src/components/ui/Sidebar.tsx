@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import { sidebarItems } from "../constatnts/sidebarItems";
 import Image from "next/image";
@@ -39,7 +39,7 @@ const SideBar = () => {
         bottom: 0,
       }}
     >
-      <div className=" flex justify-center font-bold mb-2 py-3">
+      <div className=" flex justify-center items-center font-bold mb-2 py-3">
         <Image
           src="https://i.ibb.co/x1QL0zX/dashboard-logo.jpg"
           width={60}

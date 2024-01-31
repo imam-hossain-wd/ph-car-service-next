@@ -40,7 +40,7 @@ const BookingEdit = ({params}:any) => {
  }
 
     return (
-        <div>
+        <div className="">
             <Form submitHandler={onSubmit} >
           <div className="border border-2 border-gray-300 rounded p-8 mb-4"
             // style={{

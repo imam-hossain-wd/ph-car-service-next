@@ -27,7 +27,7 @@ const Footer = () => {
                   alt="car service logo"
                 />
                 <h3 className="text-xl hover:text-red-500 ml-2 font-semibold ">
-                  Car <span className="text-red-400 ">Workshop</span>
+                   <span className="text-red-400 ">Workshop</span>
                 </h3>
               </div>
               <div className="flex my-4">

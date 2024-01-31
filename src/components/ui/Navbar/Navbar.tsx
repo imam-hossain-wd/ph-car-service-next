@@ -20,8 +20,6 @@ const Navbar = () => {
   const [loggedUser, setLoggedUser] = useState(false);
   const [role, setRole] = useState(null);
   
-
-  
   useEffect(() => {
     const loggedUserInfo = IsUserLoggedIn();
     const user: any = getUserInfo();
@@ -76,33 +74,33 @@ const Navbar = () => {
 
 
   const navMenuItems = (
-    <li className="list-none flex flex-col justify-center items-center lg:flex-row">
+    <li className="list-none text-[16px] text-gray-200 flex flex-col justify-center items-center lg:flex-row">
       <Link
-        className="text-black  mt-2 lg:mt-0 lg:mr-3 no-underline "
+        className="text-gray-800 mt-2 lg:mt-0 lg:mr-3 no-underline "
         href="/"
       >
         Home
       </Link>
       <Link
-        className="text-black  mt-2 lg:mt-0 lg:mr-3 no-underline "
+        className="text-gray-800 mt-2 lg:mt-0 lg:mr-3 no-underline "
         href="/service"
       >
         Service
       </Link>
       <Link
-        className="text-black no-underline  mt-2 lg:mt-0 lg:mr-3    "
+        className="text-gray-800 no-underline  mt-2 lg:mt-0 lg:mr-3    "
         href="/contact"
       >
         Contact{" "}
       </Link>
       <Link
-        className="text-black no-underline mt-2 lg:mt-0 lg:mr-3"
+        className="text-gray-800 no-underline mt-2 lg:mt-0 lg:mr-3"
         href="/about"
       >
         About
       </Link>
       <Link
-        className="text-black no-underline mt-2 lg:mt-0 lg:mr-3  "
+        className="text-gray-800 no-underline mt-2 lg:mt-0 lg:mr-3  "
         href="/booking"
       >
         Booking

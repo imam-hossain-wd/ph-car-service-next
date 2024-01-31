@@ -11,13 +11,11 @@ import UploadImage from "@/components/ui/uploadImage/UploadImage";
 import { useCreateAdminMutation } from "@/redux/api/adminApi";
 
 
-
 import { adminSchema } from "@/schemas/admin";
-
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { Button, Col, Row, message } from "antd";
 import { useRouter } from "next/navigation";
+
 
 
 const CreateAdminPage = () => {

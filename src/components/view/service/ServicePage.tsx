@@ -6,7 +6,6 @@ import { useAppSelector } from "@/redux/hooks";
 
 const ServicePage = () => {
   const { data: serviceDatas } = useAppSelector((state) => state.service);
-
   return (
     <div>
       <div className="mt-5">
@@ -22,7 +21,7 @@ const ServicePage = () => {
           No Data Found In Search Result
         </p>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-[90%] mx-auto">
         {serviceDatas &&
           serviceDatas.map((service: any) => (
             <ServiceProductsPage

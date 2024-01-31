@@ -35,9 +35,9 @@ const OurTeam = () => {
         majority have suffered alteration in some form, by injected humour, or
         randomised words which don't look even slightly believable.
       </p>
-      <div className=" grid place-items-center  mx-auto grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className=" grid place-items-center w-[90%]  mx-auto grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
         {technicianData?.map((data, index) => (
-          <div key={index} className="lg:w-[300px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 bg-white drop-shadow-2xl rounded p-5">
+          <div key={index} className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 bg-white drop-shadow-2xl rounded p-5">
             <Image
               className="border-2 border-red-500 rounded-md"
               src={data?.image}

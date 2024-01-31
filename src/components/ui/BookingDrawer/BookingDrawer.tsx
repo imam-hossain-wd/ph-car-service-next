@@ -60,12 +60,12 @@ const BookingDrawer = () => {
 
 
   return (
-    <>
+    <div className='w-[500px]'>
       <Button className='w-40 text-white text-[17px] hover:border-0 hover:bg-rose-500 border-white h-10 bg-transparent rounded-none'onClick={showDrawer}>
         Booked Now
       </Button>
       <Drawer
-        width={720}
+        width={500}
         onClose={onClose}
         open={open}
         styles={{
@@ -74,7 +74,7 @@ const BookingDrawer = () => {
           },
         }}
         extra={
-          <Space className='font-semibold -ml-[440px] bg-gray-200 p-2 rounded'>
+          <Space className='font-semibold -ml-[300px] bg-gray-200 p-2 rounded'>
             Book Best Service
           </Space>
         }
@@ -83,7 +83,7 @@ const BookingDrawer = () => {
             <BookingServiceForm />
           </Form>
       </Drawer>
-    </>
+    </div>
   );
 };
 
