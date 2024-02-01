@@ -1,40 +1,26 @@
 "use client";
-
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Avatar, Button, Drawer, Dropdown, MenuProps, Space } from "antd";
 import {
-  IsUserLoggedIn,
   getUserInfo,
   removeUserInfo,
 } from "@/services/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { CloseOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
-
-
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { clearAccessToken, selectAccessToken } from "@/redux/slice/authSlice";
 
 
 const Navbar = () => {
 
-  const [loggedUser, setLoggedUser] = useState(false);
-  const [role, setRole] = useState(null);
-  
-  const loggedUserInfo = IsUserLoggedIn();
+  const dispatch = useAppDispatch()
+  const accessToken = useAppSelector((state)=> state?.auth?.accessToken);
   const user: any = getUserInfo();
-
-  useEffect(() => {
-    if (loggedUserInfo) {
-      setLoggedUser(true);
-    }
-    if (user) {
-      setRole(user.role);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loggedUser, role]);
-  
   
   const handleLogOut = () => {
+    dispatch(clearAccessToken())
     removeUserInfo(authKey);
   };
 
@@ -53,10 +39,10 @@ const Navbar = () => {
       key: "1",
       label: (
         <div>
-          {loggedUser ? (
+          {accessToken ? (
             <div className="flex flex-col">
               <Button type="text">
-                <Link href={`/${role && role}/profile`}> Profile</Link>
+                <Link href={`/${user?.role && user?.role}/profile`}> Profile</Link>
               </Button>
               <Button onClick={handleLogOut} danger type="text">
                 Log out
@@ -147,7 +133,7 @@ const Navbar = () => {
             placement="left"
             title={
               <CloseOutlined
-                className="ml-72 ml-5 hover:text-red-500 text-lg transition-all delay-300"
+                className="ml-72 hover:text-red-500 text-lg transition-all delay-300"
                 onClick={() => setOpen(!open)}
               />
             }

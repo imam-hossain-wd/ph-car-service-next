@@ -47,7 +47,7 @@ const OurTeam = () => {
               alt="service"
             />
            </div>
-         <div className="flex justify-evenly -ml-10 mt-3">
+         <div className="flex justify-evenly -ml-5 mt-3">
          <div>
             <p className="text-xl hover:text-rose-500 transation-all duration-700 "><TwitterCircleFilled /></p>
             <p className="text-xl hover:text-rose-500 transation-all duration-700 "><InstagramFilled /></p>

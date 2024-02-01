@@ -106,32 +106,6 @@ const LoginPage = () => {
               </p>
             </div>
           </Form>
-          {/* social login button */}
-{
-  /* <div className="flex justify-center items-center mt-4">
-              <hr className="w-32 mr-2 text-[15px]" /> or Sing in with{" "}
-              <hr className="ml-2 w-32" />
-            </div> */
-}
-{
-  /* <div className="mt-5 flex justify-center ">
-              <Link
-                href="/facebook"
-                className="text-4xl rounded-full 
-                transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 mr-5 text-black"
-              >
-                <GithubFilled />
-              </Link>
-
-              <Link
-                href="/facebook"
-                className="text-4xl rounded-full 
-                transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 text-black"
-              >
-                <GoogleCircleFilled />
-              </Link>
-            </div> */
-}
         </div>
       </div>
     </div>

@@ -83,7 +83,7 @@ const BookService = () => {
         </div>
         <div className=" mt-8 lg:mt-0 bg-white drop-shadow-2xl  p-3 rounded w-[50%]">
           <Image
-            className="w-full rounded h-[80%]"
+            className="w-full rounded h-[520px]"
             src="https://i.ibb.co/cyxmq4p/brake-disc-1749633-1920.jpg"
             width={500}
             height={500}

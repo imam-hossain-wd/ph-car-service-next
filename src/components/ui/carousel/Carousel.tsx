@@ -3,7 +3,7 @@ import Image from 'next/image';
 import CarouselContent from './CarouselContent';
 
 const contentStyle: React.CSSProperties = {
-  height: '500px',
+  height: '550px',
   width:'100%',
   color: '#fff',
   lineHeight: '160px',
@@ -24,15 +24,15 @@ const HomeCarousel = () => (
     <Carousel autoplay >
       <div className=''>
         <h3 style={contentStyle}>
-          <Image  className='w-full h-[500px] ' src='https://i.ibb.co/nDc28mg/banner.png' width={800} height={800} alt='home banner' />
+          <Image  className='w-full h-full ' src='https://i.ibb.co/nDc28mg/banner.png' width={800} height={800} alt='home banner' />
           <div style={textContainerStyle}>
             <CarouselContent />
           </div>
         </h3>
       </div>
       <div>
-        <h3 style={contentStyle}>
-          <Image className=' w-full h-[500px]' src='https://i.ibb.co/FD4k02g/car-engine-diagnostic.png' width={800} height={800} alt='home banner' />
+        <h3 style={contentStyle}> 
+          <Image className=' w-full h-full' src='https://i.ibb.co/FD4k02g/car-engine-diagnostic.png' width={800} height={800} alt='home banner' />
           <div style={textContainerStyle}>
           <CarouselContent />
           </div>
@@ -40,7 +40,7 @@ const HomeCarousel = () => (
       </div>
       <div>
         <h3 style={contentStyle}>
-          <Image className='w-full h-[500px]' src='https://i.ibb.co/CMhgcxS/car-washing.png' width={800} height={800} alt='home banner' />
+          <Image className='w-full h-full' src='https://i.ibb.co/CMhgcxS/car-washing.png' width={800} height={800} alt='home banner' />
           <div style={textContainerStyle}>
           <CarouselContent />
           </div>

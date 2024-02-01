@@ -2,29 +2,23 @@
 "use client";
 import Contents from "@/components/ui/Contents";
 import SideBar from "@/components/ui/Sidebar";
-import { IsUserLoggedIn, getUserInfo } from "@/services/auth.service";
+import { useAppSelector } from "@/redux/hooks";
 import { Layout, Space, Spin } from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(true); 
-  // const loggedUser = IsUserLoggedIn();
-
+  const accessToken = useAppSelector((state)=> state?.auth?.accessToken);
 
   useEffect(() => {
-
-    const loggedUser = IsUserLoggedIn();
-    if (!loggedUser) {
+    if (!accessToken) {
       router.push("/login");
       return;
     }
-  
-    console.log("User is logged in.");
     setIsLoading(false);
-  }, [router]);
+  }, [router, accessToken]);
 
   if (isLoading) {
     return (
