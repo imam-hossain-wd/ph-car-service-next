@@ -35,21 +35,23 @@ const OurTeam = () => {
         majority have suffered alteration in some form, by injected humour, or
         randomised words which don't look even slightly believable.
       </p>
-      <div className=" grid place-items-center w-[90%]  mx-auto grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className=" grid place-items-center w-[95%]  mx-auto grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4 ">
         {technicianData?.map((data, index) => (
-          <div key={index} className=" transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 bg-white drop-shadow-2xl rounded p-5">
-            <Image
-              className="border-2 border-red-500 rounded-md"
+          <div key={index} className="w-full transition ease-in-out delay-150  duration-500 bg-white drop-shadow-2xl rounded p-5">
+           <div className="flex justify-center items-center">
+           <Image
+              className="border-2  w-full h-56 border-red-500 rounded-lg"
               src={data?.image}
               width={260}
               height={250}
               alt="service"
             />
+           </div>
          <div className="flex justify-evenly -ml-10 mt-3">
          <div>
-            <p className="text-xl hover:text-red-500 transation-all duration-700 "><TwitterCircleFilled /></p>
-            <p className="text-xl hover:text-red-500 transation-all duration-700 "><InstagramFilled /></p>
-            <p className="text-xl hover:text-red-500 transation-all duration-700 "><LinkedinFilled /></p>
+            <p className="text-xl hover:text-rose-500 transation-all duration-700 "><TwitterCircleFilled /></p>
+            <p className="text-xl hover:text-rose-500 transation-all duration-700 "><InstagramFilled /></p>
+            <p className="text-xl hover:text-rose-500 transation-all duration-700 "><LinkedinFilled /></p>
             </div>
             <div className="mt-2">
            <p className=" font-semibold mb-2">{data?.name}</p>

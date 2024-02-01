@@ -20,9 +20,10 @@ const Navbar = () => {
   const [loggedUser, setLoggedUser] = useState(false);
   const [role, setRole] = useState(null);
   
+  const loggedUserInfo = IsUserLoggedIn();
+  const user: any = getUserInfo();
+
   useEffect(() => {
-    const loggedUserInfo = IsUserLoggedIn();
-    const user: any = getUserInfo();
     if (loggedUserInfo) {
       setLoggedUser(true);
     }
@@ -31,9 +32,8 @@ const Navbar = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedUser, role]);
-  // console.log(loggedUser);
-  // console.log(role);
-
+  
+  
   const handleLogOut = () => {
     removeUserInfo(authKey);
   };

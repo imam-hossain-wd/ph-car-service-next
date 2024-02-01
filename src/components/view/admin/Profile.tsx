@@ -9,10 +9,6 @@ const AdminProfile = () => {
   const user:any = getUserInfo();
   const id = user.id;
   const { data, isLoading } = useGetAdminByIdQuery(id);
-  if (isLoading) {
-    return <Loading />;
-  }
-  console.log(data, 'admin datas..');
 
   const {
     bloodGroup,
@@ -29,6 +25,9 @@ const AdminProfile = () => {
     userImage,
   } = data && data;
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="w-[90%] mx-auto">
       <div>

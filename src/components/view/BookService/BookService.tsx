@@ -48,7 +48,7 @@ const BookService = () => {
   };
 
   return (
-    <div id="booking" className="p-5">
+    <div className="p-5">
       <style jsx>
         {`
           .whiteInput input,
@@ -59,17 +59,20 @@ const BookService = () => {
         `}
       </style>
 
-      <h4 className="bg-gray-200 text-lg text-center font-semibold my-3 w-80 rounded p-2 mx-auto">
+      <div className="w-[70%] mx-auto mb-5">
+      <h4 className="bg-gray-200 text-lg text-center font-semibold my-3  rounded p-2 w-80 mx-auto">
         We Provide Best service
       </h4>
+      <p className="w-[60%] mx-auto text-md">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which  look even slightly believable</p>
+      </div>
  
 
       <div className="flex flex-col lg:flex-row items-center justify-around">
     
-        <div className="w-full lg:w-[500px] bg-white p-5   drop-shadow-2xl">
+        <div className="w-full lg:w-[40%] bg-white p-5 drop-shadow-2xl">
           <div>
             <h3 className="text-2xl text-center md:text-center  font-bold -mt-2 mb-2">
-              Get A <span className="text-red-700  ">Service Now!</span>
+              Get A <span className="text-red-700 ">Service Now!</span>
             </h3>
           </div>
           <div className="w-full">
@@ -78,9 +81,9 @@ const BookService = () => {
           </Form>
           </div>
         </div>
-        <div className=" mt-8 lg:mt-0 bg-white drop-shadow-2xl  p-3 rounded">
+        <div className=" mt-8 lg:mt-0 bg-white drop-shadow-2xl  p-3 rounded w-[50%]">
           <Image
-            className="w-full lg:w-[640px] rounded h-[400px] lg:h-[500px]"
+            className="w-full rounded h-[80%]"
             src="https://i.ibb.co/cyxmq4p/brake-disc-1749633-1920.jpg"
             width={500}
             height={500}

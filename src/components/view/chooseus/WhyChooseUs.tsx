@@ -7,7 +7,7 @@ const WhyChooseUs = () => {
         <h3 className="uppercase text-xl mb-3 bg-gray-200 w-full lg:w-96 p-2 rounded mx-auto">
           Why choose us
         </h3>
-        <p className="w-[51%] font-semibold text-lg font-medium mx-auto">
+        <p className="w-[51%] font-semibold text-lg  mx-auto">
           We Provide One of the best premium Quality service. Our expertise
           technician can easily fix all kind of problems
         </p>

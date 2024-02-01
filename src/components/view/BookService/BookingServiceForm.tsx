@@ -86,7 +86,7 @@ const BookingServiceForm = () => {
               </div>
             </div>
             <div className="flex justify-center">
-            <Button htmlType="submit" className="bg-[#0C1A2D] border-0 h-9 text-white text-[15px] w-36 mx-auto font-semibold transition ease-in-out delay-150 duration-500">
+            <Button htmlType="submit" className="bg-[#0C1A2D] border-0 h-10 text-white text-[15px] w-full mt-2 mx-auto font-semibold transition ease-in-out delay-150 duration-500">
               Book Now
             </Button>
             </div>

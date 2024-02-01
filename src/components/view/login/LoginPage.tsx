@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { useUserLogInMutation } from "@/redux/api/authApi";
 import { getUserInfo, storeUserInto } from "@/services/auth.service";
 import Link from "next/link";
+import { useAppDispatch } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slice/authSlice";
 
 type FormValues = {
   Email: string;
@@ -16,6 +18,7 @@ type FormValues = {
 
 const LoginPage = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch()
   const [userLogIn] = useUserLogInMutation();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
@@ -25,6 +28,7 @@ const LoginPage = () => {
       if (res?.accessToken) {
         message.success("Login Successful");
         storeUserInto({ accessToken: res?.accessToken });
+        dispatch(setAccessToken(res?.accessToken));
       }
 
       const user = getUserInfo();
@@ -63,7 +67,7 @@ const LoginPage = () => {
           <h3 className="text-center text-lg  py-1 rounded mx-auto mb-3 ">
             Welcome Back
           </h3>
-          <p className="text-center mb-2 mb-1">Please Login into your account</p>
+          <p className="text-center mb-2 ">Please Login into your account</p>
           <Form submitHandler={onSubmit}>
             <div className="">
               <div className="mb-3">
